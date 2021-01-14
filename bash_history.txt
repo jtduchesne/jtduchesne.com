@@ -9,3 +9,5 @@ rails g rspec:install
 spring binstub rspec
 
 bundle install
+
+yarn add jquery popper.js

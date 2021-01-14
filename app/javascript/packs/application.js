@@ -10,3 +10,7 @@ import * as ActiveStorage from "@rails/activestorage"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import jQuery from "jquery"
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
