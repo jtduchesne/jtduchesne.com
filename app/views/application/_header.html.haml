@@ -4,8 +4,25 @@
   #site-description.text-uppercase
     Real-life coding examples and tutorials
 
-%nav.nav.justify-content-center
-  %a.text-secondary.nav-link{href: "#", class: "active"} Blog
-  %a.text-secondary.nav-link{href: "#"} Projects
-  %a.text-secondary.nav-link{href: "#"} Contact
-  %a.text-secondary.nav-link{href: "#"} About
+.nav.d-flex.justify-content-center
+  %nav.nav{role: "navigation"}
+    %a.text-secondary.nav-link{href: "#", class: "active"} Blog
+    %a.text-secondary.nav-link{href: "#"} Projects
+    %a.text-secondary.nav-link{href: "#"} Contact
+    %a.text-secondary.nav-link{href: "#"} About
+  %span.nav-link.cursor-default &middot;
+  %small.my-auto
+    %a.text-secondary.nav-link{href: "#", class: "dropdown-toggle dropdown-toggle-split",
+                               id: "dropdownLanguage", title: "Click to choose language",
+                               data: {toggle: "dropdown", offset: ",-5", flip: "false"},
+                               aria: {haspopup: "true", expanded: "false"}}
+      = I18n.locale.to_s.upcase
+    .dropdown-menu.p-1{aria: {labelledby: "dropdownLanguage"}}
+      - if I18n.locale == :fr
+        %a.dropdown-item.small{class: "disabled"} Français
+      - else
+        %a.dropdown-item.small{href: url_for(locale: "fr"), data: {turbolinks: "false"}} Français
+      - if I18n.locale == :en
+        %a.dropdown-item.small{class: "disabled"} English
+      - else
+        %a.dropdown-item.small{href: url_for(locale: "en"), data: {turbolinks: "false"}} English

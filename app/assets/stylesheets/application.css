@@ -26,3 +26,7 @@ body {
   font-size: 70%;
   font-weight: 250;
 }
+
+.cursor-default {
+  cursor: default;
+}

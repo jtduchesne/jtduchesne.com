@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html{lang: I18n.locale}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
@@ -20,6 +20,10 @@
     = render 'bootstrap_css'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = render 'bootstrap_js'
+    
+    - I18n.available_locales.each do |locale|
+      %link{rel: "alternate", href: root_url(locale: locale), hreflang: locale}
+    %link{rel: "alternate", href: root_url(locale: nil),  hreflang: "x-default"}
   %body
     .container.px-0.shadow-lg
       %header
