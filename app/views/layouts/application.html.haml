@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     
-    %title Jtduchesne
+    %title jtduchesne.com
     
     // Generated with: https://realfavicongenerator.net
     // using Public-domain image from: https://freesvg.org
@@ -21,4 +21,10 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = render 'bootstrap_js'
   %body
-    = yield
+    .container.px-0.shadow-lg
+      %header
+        = render 'header'
+      %main.p-2
+        = yield
+      %footer
+        = render 'footer'

@@ -1,0 +1,22 @@
+footer {
+  background-color: #1a1d20;
+  color: rgba(255,255,255,.5);
+  margin-top: 0;
+  position: relative;
+}
+footer:hover {
+  margin-top: -1em;
+}
+footer .text-partial-reset {
+  color: inherit !important;
+}
+footer:hover .text-partial-reset {
+  text-decoration: underline;
+}
+footer .hidden   { overflow: hidden; height: 0; }
+footer .hidden * { opacity: 0; }
+footer:hover .hidden   { height: 1em; }
+footer:hover .hidden * { opacity: 1; }
+footer, footer *, footer .hidden, footer .hidden * {
+  transition: all .5s;
+}
