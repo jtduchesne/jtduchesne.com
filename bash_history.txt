@@ -1,0 +1,2 @@
+rails new jtduchesne -d=postgresql --skip-action-mailbox --skip-action-cable --skip-test
+cd_with_history jtduchesne
