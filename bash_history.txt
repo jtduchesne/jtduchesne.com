@@ -7,3 +7,5 @@ html2haml app/views/layouts/application.html.erb app/views/layouts/application.h
 bundle install
 rails g rspec:install
 spring binstub rspec
+
+bundle install
