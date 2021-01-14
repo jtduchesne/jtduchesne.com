@@ -16,3 +16,5 @@ rails db:create
 
 rails g migration EnableExtensionPgcrypto
 rails db:migrate
+
+rails g controller Home index --no-helper --no-assets
