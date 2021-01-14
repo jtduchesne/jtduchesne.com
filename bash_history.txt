@@ -13,3 +13,6 @@ bundle install
 yarn add jquery popper.js
 
 rails db:create
+
+rails g migration EnableExtensionPgcrypto
+rails db:migrate
