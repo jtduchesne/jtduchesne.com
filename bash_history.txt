@@ -1,2 +1,5 @@
 rails new jtduchesne -d=postgresql --skip-action-mailbox --skip-action-cable --skip-test
 cd_with_history jtduchesne
+
+bundle install
+html2haml app/views/layouts/application.html.erb app/views/layouts/application.html.haml
