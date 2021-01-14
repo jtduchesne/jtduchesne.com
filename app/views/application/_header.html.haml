@@ -2,18 +2,18 @@
   #site-title.text-uppercase
     jtduchesne.com
   #site-description.text-uppercase
-    Real-life coding examples and tutorials
+    = t('.description')
 
 .nav.d-flex.justify-content-center
   %nav.nav{role: "navigation"}
-    %a.text-secondary.nav-link{href: "#", class: "active"} Blog
-    %a.text-secondary.nav-link{href: "#"} Projects
-    %a.text-secondary.nav-link{href: "#"} Contact
-    %a.text-secondary.nav-link{href: "#"} About
+    %a.text-secondary.nav-link{href: "#", class: "active"}= t('sections.blog')
+    %a.text-secondary.nav-link{href: "#"}= t('sections.projects')
+    %a.text-secondary.nav-link{href: "#"}= t('sections.contact')
+    %a.text-secondary.nav-link{href: "#"}= t('sections.about')
   %span.nav-link.cursor-default &middot;
   %small.my-auto
     %a.text-secondary.nav-link{href: "#", class: "dropdown-toggle dropdown-toggle-split",
-                               id: "dropdownLanguage", title: "Click to choose language",
+                               id: "dropdownLanguage", title: t('.language'),
                                data: {toggle: "dropdown", offset: ",-5", flip: "false"},
                                aria: {haspopup: "true", expanded: "false"}}
       = I18n.locale.to_s.upcase

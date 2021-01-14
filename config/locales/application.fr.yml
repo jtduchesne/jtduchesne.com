@@ -1,0 +1,16 @@
+fr:
+  application:
+    header:
+      description: Exemples concrets de code et tutoriels
+      language:    "Français\nCliquer pour choisir la langue"
+    footer:
+      copyright: Tous droits réservés
+      made_with: Fait à l'aide de
+      licenses:
+        MIT: Licence MIT
+  
+  sections:
+    blog:     Blogue
+    projects: Projets
+    contact:  Contact
+    about:    À propos

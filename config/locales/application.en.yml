@@ -1,0 +1,16 @@
+en:
+  application:
+    header:
+      description: Real-life coding examples and tutorials
+      language:    "English\nClick to choose language"
+    footer:
+      copyright: All rights reserved
+      made_with: Made with
+      licenses:
+        MIT: MIT license
+  
+  sections:
+    blog:     Blog
+    projects: Projects
+    contact:  Contact
+    about:    About
