@@ -3,3 +3,7 @@ cd_with_history jtduchesne
 
 bundle install
 html2haml app/views/layouts/application.html.erb app/views/layouts/application.html.haml
+
+bundle install
+rails g rspec:install
+spring binstub rspec
