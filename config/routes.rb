@@ -3,5 +3,14 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   
-  resources :users, format: false
+  scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
+    resources :users, path: "utilisateurs", as: "fr_users", format: false
+  end
+  scope locale: 'en' do
+    resources :users, as: "en_users", format: false
+  end
+  
+  scope path_names: {new: "nouveau", edit: "modifier"} do
+    resources :users, path: "utilisateurs", format: false
+  end
 end

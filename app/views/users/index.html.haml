@@ -12,11 +12,10 @@
     - @users.each do |user|
       %tr
         %td= user.email
-        - user.to_param.tap do |id|
-          %td= link_to t('show'), user
-          %td= link_to t('edit'), edit_user_path(user)
-          %td= link_to t('destroy'), user, method: :delete, data: { confirm: t('.confirm', email: user.email) }
+        %td= link_to t('show'), url_for(action: :show, id: user)
+        %td= link_to t('edit'), url_for(action: :edit, id: user)
+        %td= link_to t('destroy'), url_for(action: :destroy, id: user), method: :delete, data: { confirm: t('.confirm', email: user.email) }
 
 %br
 
-= link_to t('.new'), new_user_path
+= link_to t('.new'), url_for(action: :new)

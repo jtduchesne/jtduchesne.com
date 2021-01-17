@@ -1,5 +1,5 @@
 = render 'form'
 
-= link_to t('show'), @user
+= link_to t('show'), url_for(action: :show, id: @user)
 \|
-= link_to t('back'), users_path
+= link_to t('back'), url_for(action: :index)

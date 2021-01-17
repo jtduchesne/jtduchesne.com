@@ -4,6 +4,6 @@
   %b= User.human_attribute_name(:email) + ":"
   = @user.email
 
-= link_to t('edit'), edit_user_path(@user)
+= link_to t('edit'), url_for(action: :edit, id: @user)
 \|
-= link_to t('back'), users_path
+= link_to t('back'), url_for(action: :index)

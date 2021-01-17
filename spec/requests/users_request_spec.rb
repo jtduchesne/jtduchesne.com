@@ -1,27 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe "/users", type: :request do
+RSpec.describe UsersController, type: :request do
   let!(:user) { FactoryBot.create(:user) }
   
   describe "GET" do
     let!(:action) { get url }
     
-    describe "/users" do
+    describe "/utilisateurs" do
       let(:url) { users_url }
       it { expect(response).to be_successful }
     end
     
-    describe "/user/:id" do
+    describe "/utilisateur/:id" do
       let(:url) { user_url(user) }
       it { expect(response).to be_successful }
     end
     
-    describe "/user/nouveau" do
+    describe "/utilisateur/nouveau" do
       let(:url) { new_user_url }
       it { expect(response).to be_successful }
     end
     
-    describe "/user/:id/modifier" do
+    describe "/utilisateur/:id/modifier" do
       let(:url) { edit_user_url(user) }
       it { expect(response).to be_successful }
     end
@@ -33,7 +33,7 @@ RSpec.describe "/users", type: :request do
   describe "POST" do
     let(:action) { post url, params: { user: attributes } }
     
-    describe "/users" do
+    describe "/utilisateurs" do
       let(:url) { users_url }
       
       context "with valid parameters" do
@@ -45,7 +45,7 @@ RSpec.describe "/users", type: :request do
         
         it "redirects to the created User" do
           action
-          expect(response).to redirect_to(controller.user_url(User.order(:created_at).last))
+          expect(response).to redirect_to(user_url(User.order(:created_at).last))
         end
       end
       
@@ -67,7 +67,7 @@ RSpec.describe "/users", type: :request do
   describe "PATCH" do
     let(:action) { patch url, params: { user: new_attributes } }
     
-    describe "/user/:id" do
+    describe "/utilisateur/:id" do
       let(:url) { user_url(user) }
       
       context "with valid parameters" do
@@ -79,7 +79,7 @@ RSpec.describe "/users", type: :request do
         
         it "redirects to the user" do
           action
-          expect(response).to redirect_to(controller.user_url(user))
+          expect(response).to redirect_to(user_url(user))
         end
       end
       
@@ -101,7 +101,7 @@ RSpec.describe "/users", type: :request do
   describe "DELETE" do
     let(:action) { delete url }
     
-    describe "/user/:id" do
+    describe "/utilisateur/:id" do
       let(:url) { user_url(user) }
       
       it "destroys the requested user" do
@@ -110,7 +110,7 @@ RSpec.describe "/users", type: :request do
       
       it "redirects to the users list" do
         action
-        expect(response).to redirect_to(controller.users_url)
+        expect(response).to redirect_to(users_url)
       end
     end
   end

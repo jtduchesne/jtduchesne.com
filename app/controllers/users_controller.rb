@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: f(@user)
+      redirect_to url_for(action: 'show', id: @user), notice: f(@user)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: f(@user)
+      redirect_to url_for(action: 'show', id: @user), notice: f(@user)
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to users_url, notice: f(@user)
+    redirect_to url_for(action: 'index'), notice: f(@user)
   end
 
 private
