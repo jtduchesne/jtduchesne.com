@@ -170,6 +170,10 @@ fr:
       body: "Veuillez vérifier les champs suivants:"
 
   activerecord:
+    create:  "%{model} a été créé avec succès."
+    update:  "%{model} a été modifié avec succès."
+    destroy: "%{model} a été supprimé avec succès."
+    
     errors:
       messages:
         taken: "n'est pas disponible"

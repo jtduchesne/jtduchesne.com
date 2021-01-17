@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale.to_s }
   end
   
+  def f(model)
+    t(action_name, scope: 'activerecord', model: model.model_name.human)
+  end
+  
 private
   def set_locale
     locale = params[:locale]

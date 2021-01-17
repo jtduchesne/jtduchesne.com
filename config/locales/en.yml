@@ -170,6 +170,10 @@ en:
       body: "There were problems with the following fields:"
 
   activerecord:
+    create:  "%{model} was successfully created."
+    update:  "%{model} was successfully updated."
+    destroy: "%{model} was successfully destroyed."
+    
     errors:
       messages:
         taken: "has already been taken"
