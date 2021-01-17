@@ -1,21 +1,21 @@
 %h1= t('.title')
 
-%table
+%table.table.table-sm.table-hover.pb-3
   %thead
     %tr
-      %th= User.human_attribute_name(:email)
-      %th
-      %th
-      %th
+      %th{scope: "col", style: "width: 50%;"}= User.human_attribute_name(:email)
+      %th{scope: "col", style: "width: 50%;"}= User.human_attribute_name(:created_at)
+      %th{scope: "col"}
+      %th{scope: "col"}
+      %th{scope: "col"}
 
   %tbody
     - @users.each do |user|
       %tr
         %td= user.email
+        %td= l(user.created_at.to_date)
         %td= link_to t('show'), url_for(action: :show, id: user)
         %td= link_to t('edit'), url_for(action: :edit, id: user)
         %td= link_to t('destroy'), url_for(action: :destroy, id: user), method: :delete, data: { confirm: t('.confirm', email: user.email) }
-
-%br
 
 = link_to t('.new'), url_for(action: :new)

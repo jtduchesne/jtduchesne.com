@@ -16,4 +16,5 @@ fr:
       user: L'utilisateur
     attributes:
       user:
-        email: Courriel
+        email:      Courriel
+        created_at: Inscrit le

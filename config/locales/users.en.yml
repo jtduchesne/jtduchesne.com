@@ -16,4 +16,5 @@ en:
       user: The user
     attributes:
       user:
-        email: Email
+        email:      Email
+        created_at: Registered on
