@@ -24,3 +24,7 @@ bundle update
 rails g model User email:string
 rails db:migrate
 rails g scaffold_controller User --no-assets --no-helper --no-jbuilder
+
+cd app/views/layouts
+ln -s application.html.haml _application.html.haml
+cd ../../..

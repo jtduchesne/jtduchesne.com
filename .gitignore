@@ -22,6 +22,9 @@
 /storage/*
 !/storage/.keep
 
+# Ignore layout symlinks
+/app/views/layouts/_application.html.haml
+
 /public/assets
 .byebug_history
 
