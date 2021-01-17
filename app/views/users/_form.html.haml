@@ -1,9 +1,6 @@
 = form_for @user do |f|
   - if @user.errors.any?
-    #error_explanation
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+    = render 'form_errors', model: @user
 
   .field
     = f.label :email

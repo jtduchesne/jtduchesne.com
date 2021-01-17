@@ -1,0 +1,10 @@
+.alert.alert-danger.alert-dismissable.fade.show{role: "alert"}
+  .d-flex.justify-content-between
+    %h5.alert-heading
+      = t('header', scope: 'errors.template', model: model.model_name.human)
+    %button.close{type: "button", data: {dismiss: "alert"}, aria: {label: t('close')}}
+      %span{aria: {hidden: "true"}} &times;
+  = t('body', scope: 'errors.template')
+  %ul.mb-0
+    - model.errors.full_messages.each do |message|
+      %li.mb-0= message
