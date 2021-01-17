@@ -28,3 +28,6 @@ rails g scaffold_controller User --no-assets --no-helper --no-jbuilder
 cd app/views/layouts
 ln -s application.html.haml _application.html.haml
 cd ../../..
+
+rails g model Role user:belongs_to name
+rails db:migrate

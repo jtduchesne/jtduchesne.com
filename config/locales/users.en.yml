@@ -17,4 +17,5 @@ en:
     attributes:
       user:
         email:      Email
+        role:       Role
         created_at: Registered on

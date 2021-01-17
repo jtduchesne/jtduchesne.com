@@ -8,5 +8,11 @@ FactoryBot.define do
     sequence :email do |n|
       Faker::Internet.email(name: "#{first_name} #{last_name} #{n}", separators: ".")
     end
+    
+    trait :administrator do
+      after(:create) do |user|
+        user.send :make_admin!
+      end
+    end
   end
 end

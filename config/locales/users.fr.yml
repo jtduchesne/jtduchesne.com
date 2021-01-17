@@ -17,4 +17,5 @@ fr:
     attributes:
       user:
         email:      Courriel
+        role:       Rôle
         created_at: Inscrit le

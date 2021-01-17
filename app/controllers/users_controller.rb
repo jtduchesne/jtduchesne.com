@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(created_at: :desc).all
+    @users = User.includes(:role).order(created_at: :desc).all
   end
 
   # GET /users/1

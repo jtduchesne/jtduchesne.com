@@ -1,6 +1,10 @@
 %p
   %b= User.human_attribute_name(:email) + ":"
   = @user.email
+- if @user.admin?
+  %p
+    %b= User.human_attribute_name(:role) + ":"
+    = @user.role.name
 
 = link_to t('edit'), url_for(action: :edit, id: @user)
 \|
