@@ -14,3 +14,7 @@ ActiveStorage.start()
 import jQuery from "jquery"
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
+
+document.addEventListener("turbolinks:load", function() {
+  $('#toaster > .toast').toast('show');
+});

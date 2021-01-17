@@ -22,6 +22,15 @@ body {
   background-color: #f0f0f0 !important;
 }
 
+main {
+  position: relative;
+}
+#toaster {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
 .smaller {
   font-size: 70%;
   font-weight: 250;
