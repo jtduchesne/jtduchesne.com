@@ -1,9 +1,9 @@
 %p#notice= notice
 
 %p
-  %b Email:
+  %b= User.human_attribute_name(:email) + ":"
   = @user.email
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to t('edit'), edit_user_path(@user)
 \|
-= link_to 'Back', users_path
+= link_to t('back'), users_path

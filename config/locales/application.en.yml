@@ -14,3 +14,9 @@ en:
     projects: Projects
     contact:  Contact
     about:    About
+  
+  back: Back
+  
+  show:    Show
+  edit:    Edit
+  destroy: Delete

@@ -1,9 +1,9 @@
-%h1 Listing users
+%h1= t('.title')
 
 %table
   %thead
     %tr
-      %th Email
+      %th= User.human_attribute_name(:email)
       %th
       %th
       %th
@@ -12,10 +12,11 @@
     - @users.each do |user|
       %tr
         %td= user.email
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+        - user.to_param.tap do |id|
+          %td= link_to t('show'), user
+          %td= link_to t('edit'), edit_user_path(user)
+          %td= link_to t('destroy'), user, method: :delete, data: { confirm: t('.confirm', email: user.email) }
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to t('.new'), new_user_path

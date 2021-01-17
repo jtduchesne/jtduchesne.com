@@ -14,3 +14,9 @@ fr:
     projects: Projets
     contact:  Contact
     about:    À propos
+  
+  back: Retour
+  
+  show:    Afficher
+  edit:    Modifier
+  destroy: Supprimer

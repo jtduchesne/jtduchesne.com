@@ -1,0 +1,19 @@
+fr:
+  users:
+    index:
+      title: Utilisateurs
+      empty: Aucun utilisateurs pour l'instant'...
+      
+      new: Ajouter un utilisateur
+      confirm: Êtes-vous sûr de vouloir supprimer %{email} ?
+    show:
+    new:
+      title: Nouvel utilisateur
+    edit:
+  
+  activerecord:
+    models:
+      user: L'utilisateur
+    attributes:
+      user:
+        email: Courriel
