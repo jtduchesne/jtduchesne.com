@@ -3,5 +3,5 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   
-  resources :users
+  resources :users, format: false
 end
