@@ -1,5 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  #= Validations ================================================================#
+  
+  it "requires an email" do
+    expect(FactoryBot.build(:user, email: nil)).not_to be_valid
+  end
+  it "requires a valid email" do
+    expect(FactoryBot.build(:user, email: "<b>invalid</b>@email.com")).not_to be_valid
+  end
+  it "requires a unique email" do
+    existing = FactoryBot.create(:user)
+    expect(FactoryBot.build(:user, email: existing.email)).not_to be_valid
+  end
+  
+  #= Attributes =================================================================#
+  
+  let(:user) { FactoryBot.build(:user) }
+  
+  describe "#email" do
+    subject { user.email }
+    it { is_expected.to be_a(String) }
+  end
 end

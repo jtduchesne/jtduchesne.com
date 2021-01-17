@@ -22,3 +22,4 @@ rails g controller Home index --no-helper --no-assets
 bundle update
 
 rails g model User email:string
+rails db:migrate
