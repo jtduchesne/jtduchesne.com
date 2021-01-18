@@ -33,3 +33,6 @@ rails g model Role user:belongs_to name
 rails db:migrate
 
 rails g controller Session new create destroy --no-helper
+
+sudo gem install mailcatcher
+mailcatcher

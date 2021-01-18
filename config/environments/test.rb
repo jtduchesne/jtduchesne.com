@@ -36,7 +36,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.tap do |m|
+    m.default_url_options = { host: 'test.host' }
+    m.perform_caching = false
+    m.logger = nil
+  end
+  config.active_job.logger = nil
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
