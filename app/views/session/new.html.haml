@@ -1,0 +1,11 @@
+%h5= t('.title')
+
+= form_with model: @user, url: url_for(action: 'create') do |f|
+  - if @user.errors.any?
+    = render 'form_errors', model: @user
+  
+  .input-group
+    = f.label :email, class: "sr-only"
+    = f.email_field :email, class: "form-control", placeholder: t('.prompt'), autocomplete: "off", required: true
+    .input-group-append
+      %button.btn.btn-success{id: "loginButton", type: "submit"} &gt;

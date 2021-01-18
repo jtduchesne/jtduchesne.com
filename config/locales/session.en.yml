@@ -1,0 +1,5 @@
+en:
+  session:
+    new:
+      title:  Login
+      prompt: Enter your email address
