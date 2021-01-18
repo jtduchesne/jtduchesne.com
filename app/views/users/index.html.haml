@@ -12,7 +12,7 @@
   %tbody
     - @users.each do |user|
       %tr{class: ("table-info" if user.admin?)}
-        %td= user.email
+        %td= emphasis_if_unverified(user, :email)
         %td= l(user.created_at.to_date)
         %td= link_to t('show'), url_for(action: :show, id: user)
         %td= link_to t('edit'), url_for(action: :edit, id: user)

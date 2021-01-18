@@ -9,6 +9,14 @@ FactoryBot.define do
       Faker::Internet.email(name: "#{first_name} #{last_name} #{n}", separators: ".")
     end
     
+    trait :unverified do
+    end
+    trait :verified do
+      after(:create) do |user|
+        user.verify!(user.token)
+      end
+    end
+    
     trait :administrator do
       after(:create) do |user|
         user.send :make_admin!

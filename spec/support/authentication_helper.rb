@@ -3,7 +3,7 @@ module AuthenticationHelper
     allow_any_instance_of(ApplicationController).to receive(:session).and_return({user_id: user.id})
   end
   def login
-    login_as FactoryBot.create(:user)
+    login_as FactoryBot.create(:user, :verified)
   end
   def logout
     allow_any_instance_of(ApplicationController).to receive(:session).and_return({})

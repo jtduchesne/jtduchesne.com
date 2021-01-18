@@ -36,3 +36,6 @@ rails g controller Session new create destroy --no-helper
 
 sudo gem install mailcatcher
 mailcatcher
+
+rails g migration AddTokenColumnToUser token:string
+rails db:migrate

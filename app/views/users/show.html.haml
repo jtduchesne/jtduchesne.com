@@ -1,6 +1,6 @@
 %p
   %b= User.human_attribute_name(:email) + ":"
-  = @user.email
+  = emphasis_if_unverified(@user, :email)
 - if @user.admin?
   %p
     %b= User.human_attribute_name(:role) + ":"

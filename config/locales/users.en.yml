@@ -16,6 +16,9 @@ en:
       user: The user
     attributes:
       user:
-        email:      Email
-        role:       Role
-        created_at: Registered on
+        email:       Email
+        role:        Role
+        verified:    Verified
+        unverified:  Unverified
+        created_at:  Registered on
+        verified_at: Verified on

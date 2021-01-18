@@ -16,6 +16,9 @@ fr:
       user: L'utilisateur
     attributes:
       user:
-        email:      Courriel
-        role:       Rôle
-        created_at: Inscrit le
+        email:       Courriel
+        role:        Rôle
+        verified:    Vérifié
+        unverified:  Non-vérifié
+        created_at:  Inscrit le
+        verified_at: Vérifié le
