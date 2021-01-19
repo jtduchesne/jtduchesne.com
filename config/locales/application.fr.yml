@@ -15,6 +15,9 @@ fr:
     contact:  Contact
     about:    À propos
   
+  logged_in:  Vous êtes maintenant connecté(e)
+  logged_out: Vous êtes maintenant déconnecté(e)
+  
   back: Retour
   
   show:    Afficher

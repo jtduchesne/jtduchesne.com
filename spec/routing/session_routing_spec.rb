@@ -8,6 +8,10 @@ RSpec.describe SessionController, type: :routing do
     it { expect(delete: "/connexion").to   route_to("session#destroy", locale: "fr") }
     
     it { expect(get: "/d#{é}connexion").to route_to("session#destroy", locale: "fr") }
+    
+    it { expect(get: "/fr/ABCDEFGHJKLMNPQRSTUVWXYZ").to route_to("session#verify",
+                                                                 token: "ABCDEFGHJKLMNPQRSTUVWXYZ",
+                                                                 locale: "fr") }
   end
   
   describe "EN routing" do
@@ -16,5 +20,9 @@ RSpec.describe SessionController, type: :routing do
     it { expect(delete: "/login").to route_to("session#destroy", locale: "en") }
     
     it { expect(get: "/logout").to route_to("session#destroy", locale: "en") }
+    
+    it { expect(get: "/en/ABCDEFGHJKLMNPQRSTUVWXYZ").to route_to("session#verify",
+                                                                 token: "ABCDEFGHJKLMNPQRSTUVWXYZ",
+                                                                 locale: "en") }
   end
 end

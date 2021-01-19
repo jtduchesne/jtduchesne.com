@@ -3,3 +3,11 @@ fr:
     new:
       title:  Connexion
       prompt: Entrez votre adresse courriel
+    verify:
+      success: Verification réussie, veuillez entrer votre courriel à nouveau pour vous connecter.
+      failure: Une erreur est survenue lors de la vérification de votre courriel, veuillez essayer à nouveau.
+    
+    email:
+      sent:         Courriel envoyé à %{email}
+      already_sent: Courriel déjà envoyé à %{email} il y a %{time_ago},
+                    vous devez cliquer sur le lien à l'intérieur pour confirmer votre identité.

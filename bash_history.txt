@@ -39,3 +39,5 @@ mailcatcher
 
 rails g migration AddTokenColumnToUser token:string
 rails db:migrate
+
+rails g mailer User verification

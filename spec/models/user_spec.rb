@@ -47,6 +47,10 @@ RSpec.describe User, type: :model do
     subject { user.verified? }
     it { is_expected.to be false }
     
+    context "if the user is not persisted" do
+      let(:user) { FactoryBot.build(:user) }
+      it { is_expected.to be false }
+    end
     context "if the user is verified" do
       let(:user) { FactoryBot.create(:user, :verified) }
       it { is_expected.to be true }

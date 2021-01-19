@@ -1,3 +1,7 @@
 en:
   email:
     do_not_reply: do-not-reply
+  
+  user_mailer:
+    verification:
+      subject: Please confirm your email address

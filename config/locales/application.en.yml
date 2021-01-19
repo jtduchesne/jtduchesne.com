@@ -15,6 +15,9 @@ en:
     contact:  Contact
     about:    About
   
+  logged_in:  You are now logged in
+  logged_out: You are now logged out
+  
   back: Back
   
   show:    Show

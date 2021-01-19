@@ -3,3 +3,11 @@ en:
     new:
       title:  Login
       prompt: Enter your email address
+    verify:
+      success: Verification successful, now re-enter your email address to login.
+      failure: An error occured while verifying your email address, please try again.
+    
+    email:
+      sent:         Email sent to %{email}
+      already_sent: Email already sent %{time_ago} ago to %{email},
+                    you must click on the link inside to confirm your identity.
