@@ -66,6 +66,16 @@ RSpec.describe User, type: :model do
     end
   end
   
+  describe "#otp_digest" do
+    subject { user.otp_digest }
+    it { is_expected.to be_nil }
+    
+    context "if the user is verified" do
+      let(:user) { FactoryBot.create(:user, :verified) }
+      it { is_expected.to be_a(String) }
+    end
+  end
+  
   describe "#admin?" do
     subject { user.admin? }
     it { is_expected.to be false }
@@ -125,6 +135,9 @@ RSpec.describe User, type: :model do
         it "sets #verified_at" do
           expect{ subject }.to change{ user.reload.verified_at }.from(nil)
         end
+        it "sets #otp_digest" do
+          expect{ subject }.to change{ user.reload.otp_digest }.from(nil)
+        end
         
         it "returns the user" do
           expect(subject).to be user
@@ -138,6 +151,9 @@ RSpec.describe User, type: :model do
         end
         it "does not change #verified_at" do
           expect{ subject }.not_to change{ user.reload.verified_at }
+        end
+        it "does not change #otp_digest" do
+          expect{ subject }.not_to change{ user.reload.otp_digest }
         end
         
         it "returns the user" do
@@ -155,9 +171,86 @@ RSpec.describe User, type: :model do
       it "does not set #verified_at" do
         expect{ subject }.not_to change{ user.reload.verified_at }.from(nil)
       end
+      it "does not change #otp_digest" do
+        expect{ subject }.not_to change{ user.reload.otp_digest }.from(nil)
+      end
       
       it "returns nil" do
         expect(subject).to be_nil
+      end
+    end
+  end
+  
+  describe "#generate_onetime_password" do
+    subject { user.generate_onetime_password }
+    
+    it "creates a new #otp_digest" do
+      expect{ subject }.to change{ user.otp_digest }
+    end
+    it "returns the 4-letters password" do
+      expect(subject).to be_a(String).and have_attributes(length: 4)
+    end
+  end
+  
+  describe "#authenticate(password)" do
+    subject { user.authenticate(password) }
+    
+    context "when OTP is not set" do
+      let(:user) { FactoryBot.create(:user, :without_otp) }
+      let(:password) { nil }
+      
+      it "does not add any errors to the user" do
+        expect{ subject }.not_to change{ user.errors.count }
+      end
+      
+      it "returns nil" do
+        expect(subject).to be_nil
+      end
+    end
+    context "when OTP is set," do
+      let(:user) { FactoryBot.create(:user, :with_otp) }
+      
+      context "with the right password" do
+        let(:password) { user.otp }
+      
+        it "resets #otp_digest" do
+          expect{ subject }.to change{ user.otp_digest }.to(nil)
+        end
+        it "does not add any errors to the user" do
+          expect{ subject }.not_to change{ user.errors.count }
+        end
+        
+        it "returns the user" do
+          expect(subject).to eq user
+        end
+      end
+      context "with the right password but lowercase" do
+        let(:password) { user.otp.downcase }
+      
+        it "resets #otp_digest" do
+          expect{ subject }.to change{ user.otp_digest }.to(nil)
+        end
+        it "does not add any errors to the user" do
+          expect{ subject }.not_to change{ user.errors.count }
+        end
+        
+        it "returns the user" do
+          expect(subject).to eq user
+        end
+      end
+      context "with the wrong password" do
+        let(:password) { user.otp.reverse }
+      
+        it "does not change #otp_digest" do
+          expect{ subject }.not_to change{ user.otp_digest }
+        end
+        it "adds an errors to the user" do
+          expect{ subject }.to change{ user.errors.count }.by(1)
+        end
+        
+        it "returns nil" do
+          expect(subject).to be_nil
+        end
       end
     end
   end

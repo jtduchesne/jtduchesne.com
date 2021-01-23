@@ -41,3 +41,7 @@ rails g migration AddTokenColumnToUser token:string
 rails db:migrate
 
 rails g mailer User verification
+
+rails g migration AddOtpColumnToUser otp:string
+rails db:migrate
+bundle install

@@ -22,3 +22,12 @@ en:
         unverified:  Unverified
         created_at:  Registered on
         verified_at: Verified on
+        otp:         Your code
+    
+    errors:
+      models:
+        user:
+          attributes:
+            otp:
+              wrong_length: must be %{count} letters long
+              invalid:      is either not valid or has expired

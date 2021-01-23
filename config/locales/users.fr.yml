@@ -22,3 +22,12 @@ fr:
         unverified:  Non-vérifié
         created_at:  Inscrit le
         verified_at: Vérifié le
+        otp:         Votre code
+    
+    errors:
+      models:
+        user:
+          attributes:
+            otp:
+              wrong_length: doit contenir %{count} lettres
+              invalid:      n'est pas valide, ou alors est expiré

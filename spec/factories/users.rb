@@ -17,6 +17,19 @@ FactoryBot.define do
       end
     end
     
+    trait :without_otp do
+    end
+    trait :with_otp do
+      transient do
+        model { create(:user).tap{ |u| u.generate_onetime_password } }
+      end
+      
+      after(:create) do |user, evaluator|
+        user.update_columns otp_digest: evaluator.model.otp_digest
+        user.otp = evaluator.model.otp
+      end
+    end
+    
     trait :administrator do
       after(:create) do |user|
         user.send :make_admin!
