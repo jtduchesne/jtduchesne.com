@@ -11,6 +11,7 @@ class SessionController < ApplicationController
     @user = User.find_or_initialize_by(user_params)
     
     if @user.verified?
+      prepare_for_connection @user
       render :connect
     elsif @user.persisted?
       render :created
@@ -53,6 +54,7 @@ class SessionController < ApplicationController
   # GET /:token
   def verify
     if @user = User.verify!(params[:token])
+      prepare_for_connection @user
       render :verified
     else
       flash.alert = t('.failure')
@@ -77,6 +79,12 @@ private
   def prepare_for_verification(user)
     user.touch unless user.previously_new_record?
     UserMailer.with(user: user).verification.deliver_later
+    flash.now.notice = t('email.sent', email: user.email)
+    @email_sent = true
+  end
+  def prepare_for_connection(user)
+    user.generate_onetime_password unless user.otp.present?
+    UserMailer.with(user: user, otp: user.otp).connection.deliver_later
     flash.now.notice = t('email.sent', email: user.email)
     @email_sent = true
   end

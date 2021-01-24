@@ -6,3 +6,5 @@ en:
   user_mailer:
     verification:
       subject: Please confirm your email address
+    connection:
+      subject: Your access code

@@ -4,4 +4,9 @@ class UserMailer < ApplicationMailer
   def verification
     mail(to: @user.email)
   end
+  
+  def connection
+    @otp = params[:otp]
+    mail(to: @user.email)
+  end
 end

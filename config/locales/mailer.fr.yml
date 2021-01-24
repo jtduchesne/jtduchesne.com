@@ -6,3 +6,5 @@ fr:
   user_mailer:
     verification:
       subject: S'il vous plait confirmer votre adresse courriel
+    connection:
+      subject: Votre code d'accès

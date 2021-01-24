@@ -47,6 +47,10 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to change{ logged_in? }.to false
         end
         
+        it "sends connection email" do
+          expect{ action }.to have_enqueued_mail(UserMailer, :connection)
+        end
+      
         it "renders a successful response ('connect' template)" do
           action
           expect(response).to be_successful
@@ -218,6 +222,10 @@ RSpec.describe "Session", type: :request do
       
       it "does not log the user in" do
         expect{ action }.to change{ logged_in? }.to false
+      end
+      
+      it "sends connection email" do
+        expect{ action }.to have_enqueued_mail(UserMailer, :connection)
       end
       
       it "renders a successful response ('verified' template)" do

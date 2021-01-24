@@ -43,4 +43,35 @@ RSpec.describe UserMailer, type: :mailer do
       end
     end
   end
+  
+  describe '.connection' do
+    let(:user) { FactoryBot.create(:user, :with_otp) }
+    let(:mail) { UserMailer.with(user: user, otp: user.otp).connection }
+    
+    describe '#subject' do
+      subject { mail.subject.downcase }
+      
+      context 'when in english' do
+        before(:each) { I18n.locale = :en }
+        it { is_expected.to include "access code" }
+      end
+      context 'when in french' do
+        before(:each) { I18n.locale = :fr }
+        it { is_expected.to include "code d'accès" }
+      end
+    end
+    describe '#to' do
+      subject { mail[:to].decoded }
+      
+      it { is_expected.to eq user.email }
+    end
+    
+    describe '#body' do
+      subject { mail.body.encoded }
+      
+      it 'contains the one-time password' do
+        expect(subject).to include user.otp
+      end
+    end
+  end
 end
