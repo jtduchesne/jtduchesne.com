@@ -1,0 +1,4 @@
+.alert.alert-danger.alert-dismissable.fade.show{role: "alert"}
+  %span.mr-3= model.errors.full_messages.to_sentence
+  %button.close{type: "button", data: {dismiss: "alert"}, aria: {label: t('close')}}
+    %span{aria: {hidden: "true"}} &times;

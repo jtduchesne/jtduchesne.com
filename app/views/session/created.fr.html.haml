@@ -1,0 +1,21 @@
+%h5 Connexion
+%p.my-0
+  - if @email_sent
+    Un courriel de vérification a été envoyé à
+    %strong
+      %em><= @user.email
+    \.
+  - else
+    Un courriel de vérification a déjà été envoyé à
+    %strong
+      %em><= @user.email
+    il y a
+    = time_ago_in_words(@user.updated_at)
+    \.
+%p.my-0
+  Cliquez d'abord sur le lien dans le message pour <em>valider votre adresse courriel</em>,
+  inscrivez ensuite le <em>code à 4 lettres</em> qui vous sera remis pour vous connecter.
+- unless @email_sent
+  = render 'send_again'
+
+= render 'enter_code'

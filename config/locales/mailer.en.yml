@@ -1,6 +1,7 @@
 en:
   email:
     do_not_reply: do-not-reply
+    sent: Email sent to %{email}
   
   user_mailer:
     verification:

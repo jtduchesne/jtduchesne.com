@@ -1,0 +1,6 @@
+= form_with model: @user, url: url_for(action: 'update'), class: "form" do |f|
+  .row.justify-content-center
+    .col-auto
+      %input{type: "hidden", name: "send", value: "1"}
+      = f.hidden_field :email
+      = f.submit t('.submit'), class: "btn btn-sm btn-link"

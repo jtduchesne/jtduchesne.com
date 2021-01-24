@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get    '/connexion',   to: 'session#new',     as: "fr_login"
     post   '/connexion',   to: 'session#create',  as: ""
+    patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   scope locale: 'en' do
     get    '/login',  to: 'session#new',     as: "en_login"
     post   '/login',  to: 'session#create',  as: ""
+    patch  '/login',  to: 'session#update',  as: ""
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   scope path_names: {new: "nouveau", edit: "modifier"} do
     get    '/connexion',   to: 'session#new',     as: "login"
     post   '/connexion',   to: 'session#create',  as: ""
+    patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     

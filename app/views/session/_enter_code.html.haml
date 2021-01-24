@@ -1,0 +1,14 @@
+= form_with model: @user, url: url_for(action: 'update'), class: "form" do |f|
+  = f.hidden_field :email
+  - if @user.errors.any?
+    .row.justify-content-center
+      .col-auto
+        = render 'form_errors', model: @user
+  
+  .row.justify-content-center.mt-3
+    .col-auto
+      %input.form-control.form-control-lg{type: "text", name: "otp", id: "otp", value: params[:otp],
+                                          class: "border border-success rounded-0 text-center text-uppercase",
+                                          style: "width: 5em;", maxlength: 4, placeholder: "Code",
+                                          autocomplete: "off", required: true}
+      = f.submit t('.submit'), class: "btn btn-sm btn-block btn-success rounded-0"

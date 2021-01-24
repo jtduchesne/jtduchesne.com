@@ -1,0 +1,20 @@
+%h5 Login
+%p.my-0
+  - if @email_sent
+    A verification email has been sent to
+    %strong
+      %em><= @user.email
+    \.
+  - else
+    A verification email has already been sent to
+    %strong
+      %em><= @user.email
+    = time_ago_in_words(@user.updated_at)
+    ago.
+%p.my-0
+  First click the link inside to <em>confirm your email address</em>,
+  then write the given <em>4-letters code</em> in the box below to login.
+- unless @email_sent
+  = render 'send_again'
+
+= render 'enter_code'
