@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :request do
+  before { login_as_admin }
+  
   let!(:user) { FactoryBot.create(:user) }
   
   describe "GET" do

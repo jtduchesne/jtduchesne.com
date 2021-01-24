@@ -2,6 +2,9 @@ module AuthenticationHelper
   def login_as(user)
     allow_any_instance_of(ApplicationController).to receive(:session).and_return({user_id: user.id})
   end
+  def login_as_admin
+    login_as FactoryBot.create(:user, :administrator)
+  end
   def login
     login_as FactoryBot.create(:user, :verified)
   end
@@ -9,7 +12,8 @@ module AuthenticationHelper
     allow_any_instance_of(ApplicationController).to receive(:session).and_return({})
   end
   
-  def current_user; controller.try :send, :current_user; end
-  def logged_in?;   controller.try :send, :logged_in?;   end
-  def logged_out?;  controller.try :send, :logged_out?;  end
+  def current_user;        controller.try :send, :current_user;        end
+  def logged_in_as_admin?; controller.try :send, :logged_in_as_admin?; end
+  def logged_in?;          controller.try :send, :logged_in?;          end
+  def logged_out?;         controller.try :send, :logged_out?;         end
 end

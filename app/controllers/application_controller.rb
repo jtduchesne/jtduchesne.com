@@ -10,6 +10,21 @@ class ApplicationController < ActionController::Base
   end
   
 protected
+  def require_login
+    unless logged_in?
+      cookies[:referer] = {
+        value: request.url,
+        expires: 30.minutes
+      }
+      redirect_to controller: 'session', action: 'new'
+    end
+  end
+  def require_admin
+    unless require_login
+      redirect_to root_url(locale: params[:locale]) unless logged_in_as_admin?
+    end
+  end
+  
   def current_user
     if @current_user.nil?
       @current_user = session[:user_id] ? User.find(session[:user_id]) : false

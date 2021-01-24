@@ -30,7 +30,7 @@ class SessionController < ApplicationController
     if @user.verified?
       if @user.authenticate(params[:otp])
         login @user
-        redirect_to root_url(locale: params[:locale])
+        redirect_to referer || root_url(locale: params[:locale])
       else
         render :connect
       end
@@ -45,12 +45,6 @@ class SessionController < ApplicationController
     redirect_to action: :new
   end
 
-  # DELETE /login
-  def destroy
-    logout
-    redirect_to root_url(locale: params[:locale])
-  end
-
   # GET /:token
   def verify
     if @user = User.verify!(params[:token])
@@ -62,7 +56,17 @@ class SessionController < ApplicationController
     end
   end
 
+  # DELETE /login
+  def destroy
+    logout
+    redirect_to root_url(locale: params[:locale])
+  end
+
 private
+  def referer
+    cookies.delete(:referer).presence
+  end
+  
   def user_params
     params.require(:user).permit(:email)
   end
