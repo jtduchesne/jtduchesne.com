@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Use RSpec test framework
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   # Use FactoryBot instead of test fixtures
   gem 'factory_bot_rails'
   gem 'faker', require: false

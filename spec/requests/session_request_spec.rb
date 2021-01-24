@@ -8,9 +8,7 @@ RSpec.describe "Session", type: :request do
     describe "/connexion" do
       let(:url) { login_url }
       
-      it "returns http success" do
-        expect(response).to be_successful
-      end
+      it { expect(response).to render_template(:new) }
     end
     
     describe "/déconnexion" do
@@ -51,9 +49,9 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to have_enqueued_mail(UserMailer, :connection)
         end
       
-        it "renders a successful response ('connect' template)" do
+        it "renders 'connect' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:connect)
         end
       end
       
@@ -67,9 +65,9 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to change{ logged_in? }.to false
         end
         
-        it "renders a successful response ('created' template)" do
+        it "renders 'created' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:created)
         end
       end
       
@@ -87,9 +85,9 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to have_enqueued_mail(UserMailer, :verification)
         end
         
-        it "renders a successful response ('created' template)" do
+        it "renders 'created' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:created)
         end
       end
       
@@ -103,9 +101,9 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to change{ logged_in? }.to false
         end
         
-        it "renders a successful response ('new' template)" do
+        it "renders 'new' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:new)
         end
       end
     end
@@ -147,9 +145,9 @@ RSpec.describe "Session", type: :request do
             expect{ action }.to change{ logged_in? }.to false
           end
           
-          it "renders a successful response ('connect' template)" do
+          it "renders 'connect' template" do
             action
-            expect(response).to be_successful
+            expect(response).to render_template(:connect)
           end
         end
       end
@@ -160,9 +158,9 @@ RSpec.describe "Session", type: :request do
           expect{ action }.to change{ logged_in? }.to false
         end
         
-        it "renders a successful response ('created' template)" do
+        it "renders 'created' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:created)
         end
         
         context "and 'send' param" do
@@ -179,9 +177,9 @@ RSpec.describe "Session", type: :request do
             expect{ action }.to change{ unverified_user.reload.updated_at }
           end
           
-          it "renders a successful response ('created' template)" do
+          it "renders 'created' template" do
             action
-            expect(response).to be_successful
+            expect(response).to render_template(:created)
           end
         end
       end
@@ -228,9 +226,9 @@ RSpec.describe "Session", type: :request do
         expect{ action }.to have_enqueued_mail(UserMailer, :connection)
       end
       
-      it "renders a successful response ('verified' template)" do
+      it "renders 'verified' template" do
         action
-        expect(response).to be_successful
+        expect(response).to render_template(:verified)
       end
     end
     context "with an invalid token" do

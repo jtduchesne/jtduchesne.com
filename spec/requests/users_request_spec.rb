@@ -58,9 +58,9 @@ RSpec.describe UsersController, type: :request do
           expect{ action }.not_to change(User, :count)
         end
         
-        it "renders a successful response (to display the 'new' template)" do
+        it "renders 'new' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:new)
         end
       end
     end
@@ -92,9 +92,9 @@ RSpec.describe UsersController, type: :request do
           expect{ action }.not_to change{ user.reload.email }
         end
         
-        it "renders a successful response (to display the 'edit' template)" do
+        it "renders 'edit' template" do
           action
-          expect(response).to be_successful
+          expect(response).to render_template(:edit)
         end
       end
     end
