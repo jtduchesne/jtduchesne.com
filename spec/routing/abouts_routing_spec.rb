@@ -1,38 +1,38 @@
 require "rails_helper"
 
-RSpec.describe AboutsController, type: :routing do
+RSpec.describe Admin::AboutsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(get: "/abouts").to route_to("abouts#index")
+      expect(get: "/admin/abouts").to route_to("admin/abouts#index")
     end
 
     it "routes to #new" do
-      expect(get: "/abouts/new").to route_to("abouts#new")
+      expect(get: "/admin/abouts/new").to route_to("admin/abouts#new")
     end
 
     it "routes to #show" do
-      expect(get: "/abouts/1").to route_to("abouts#show", id: "1")
+      expect(get: "/admin/abouts/1").to route_to("admin/abouts#show", id: "1")
     end
 
     it "routes to #edit" do
-      expect(get: "/abouts/1/edit").to route_to("abouts#edit", id: "1")
+      expect(get: "/admin/abouts/1/edit").to route_to("admin/abouts#edit", id: "1")
     end
 
 
     it "routes to #create" do
-      expect(post: "/abouts").to route_to("abouts#create")
+      expect(post: "/admin/abouts").to route_to("admin/abouts#create")
     end
 
     it "routes to #update via PUT" do
-      expect(put: "/abouts/1").to route_to("abouts#update", id: "1")
+      expect(put: "/admin/abouts/1").to route_to("admin/abouts#update", id: "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(patch: "/abouts/1").to route_to("abouts#update", id: "1")
+      expect(patch: "/admin/abouts/1").to route_to("admin/abouts#update", id: "1")
     end
 
     it "routes to #destroy" do
-      expect(delete: "/abouts/1").to route_to("abouts#destroy", id: "1")
+      expect(delete: "/admin/abouts/1").to route_to("admin/abouts#destroy", id: "1")
     end
   end
 end
