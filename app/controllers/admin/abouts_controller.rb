@@ -28,7 +28,7 @@ class Admin::AboutsController < Admin::AdminController
 
     respond_to do |format|
       if @about.save
-        format.html { redirect_to @about, notice: 'About was successfully created.' }
+        format.html { redirect_to url_for(action: 'show', id: @about), notice: f(@about) }
         format.json { render :show, status: :created, location: @about }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::AboutsController < Admin::AdminController
   def update
     respond_to do |format|
       if @about.update(about_params)
-        format.html { redirect_to @about, notice: 'About was successfully updated.' }
+        format.html { redirect_to url_for(action: 'show', id: @about), notice: f(@about) }
         format.json { render :show, status: :ok, location: @about }
       else
         format.html { render :edit }
@@ -56,19 +56,17 @@ class Admin::AboutsController < Admin::AdminController
   def destroy
     @about.destroy
     respond_to do |format|
-      format.html { redirect_to abouts_url, notice: 'About was successfully destroyed.' }
+      format.html { redirect_to url_for(action: 'index'), notice: f(@about) }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_about
-      @about = About.find(params[:id])
-    end
+private
+  def set_about
+    @about = About.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def about_params
-      params.fetch(:about, {})
-    end
+  def about_params
+    params.fetch(:about, {})
+  end
 end

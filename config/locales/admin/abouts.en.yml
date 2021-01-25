@@ -1,0 +1,24 @@
+en:
+  admin:
+    abouts:
+      index:
+        title: About pages
+        empty: There's no pages yet...
+        
+        new: Create a new page
+        confirm: Are you sure you want to delete this About page from %{created_at} ?
+      show:
+        title: This is a preview of the About page
+      new:
+        title: New About page
+      edit:
+        title: Edit current About page
+        body:
+          This will amend current page without creating a new one. If you end up changing
+          more than just typos and minor mistakes, maybe you should create a new one instead...
+  
+  activerecord:
+    models:
+      about: The About page
+    attributes:
+      about:

@@ -1,0 +1,24 @@
+fr:
+  admin:
+    abouts:
+      index:
+        title: Pages À-propos
+        empty: Aucune page pour l'instant...
+        
+        new: Créer une nouvelle page
+        confirm: Êtes-vous sûr de vouloir supprimer cette page À-propos du %{created_at} ?
+      show:
+        title: Ceci est un aperçu de la page À-propos
+      new:
+        title: Nouvelle page À-propos
+      edit:
+        title: Modification de la page À-propos actuelle
+        body:
+          Pour amender la page actuelle sans en créer une nouvelle. Si vous vous trouvez à modifier plus
+          que des fautes de frappes ou des erreurs mineurs, vous devriez peut-être en créer une autre...
+  
+  activerecord:
+    models:
+      about: La page À-propos
+    attributes:
+      about:

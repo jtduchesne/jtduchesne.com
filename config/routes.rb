@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   TOKEN_REGEXP = /[A-Za-z1-9=]{24}/.freeze unless defined?(TOKEN_REGEXP)
   
-  resources :abouts
-  
   scope "(:locale)/", locale: /fr|en/ do
     root 'home#index'
   end
@@ -18,7 +16,8 @@ Rails.application.routes.draw do
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
     scope '/admin', module: 'admin' do
-      resources :users, path: "utilisateurs", as: "fr_users", format: false
+      resources :abouts, path: "à-propos",     as: "fr_abouts"
+      resources :users,  path: "utilisateurs", as: "fr_users", format: false
     end
     
     get '/fr/:token', to: 'session#verify', as: "fr_verification", token: TOKEN_REGEXP
@@ -31,7 +30,8 @@ Rails.application.routes.draw do
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
     scope '/admin', module: 'admin' do
-      resources :users, as: "en_users", format: false
+      resources :abouts, as: "en_abouts"
+      resources :users,  as: "en_users", format: false
     end
     
     get '/en/:token', to: 'session#verify', as: "en_verification", token: TOKEN_REGEXP
@@ -45,7 +45,8 @@ Rails.application.routes.draw do
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     
     scope '/admin', module: 'admin' do
-      resources :users, path: "utilisateurs", format: false
+      resources :abouts, path: "à-propos"
+      resources :users,  path: "utilisateurs", format: false
     end
     
     get '/:token', to: 'session#verify', as: "verification", token: TOKEN_REGEXP
