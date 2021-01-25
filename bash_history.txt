@@ -45,3 +45,6 @@ rails g mailer User verification
 rails g migration AddOtpColumnToUser otp:string
 rails db:migrate
 bundle install
+
+rails g scaffold About --no-assets --no-helper
+rails db:migrate

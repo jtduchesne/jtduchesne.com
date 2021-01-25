@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   TOKEN_REGEXP = /[A-Za-z1-9=]{24}/.freeze unless defined?(TOKEN_REGEXP)
   
+  resources :abouts
+  
   scope "(:locale)/", locale: /fr|en/ do
     root 'home#index'
   end
