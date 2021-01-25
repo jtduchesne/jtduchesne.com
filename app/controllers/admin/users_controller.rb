@@ -1,5 +1,4 @@
-class UsersController < ApplicationController
-  before_action :require_admin
+class Admin::UsersController < Admin::AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   layout 'jumbotron'

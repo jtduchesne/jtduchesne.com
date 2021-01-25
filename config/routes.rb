@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
-    resources :users, path: "utilisateurs", as: "fr_users", format: false
+    scope '/admin', module: 'admin' do
+      resources :users, path: "utilisateurs", as: "fr_users", format: false
+    end
     
     get '/fr/:token', to: 'session#verify', as: "fr_verification", token: TOKEN_REGEXP
   end
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
-    resources :users, as: "en_users", format: false
+    scope '/admin', module: 'admin' do
+      resources :users, as: "en_users", format: false
+    end
     
     get '/en/:token', to: 'session#verify', as: "en_verification", token: TOKEN_REGEXP
   end
@@ -35,7 +39,9 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     
-    resources :users, path: "utilisateurs", format: false
+    scope '/admin', module: 'admin' do
+      resources :users, path: "utilisateurs", format: false
+    end
     
     get '/:token', to: 'session#verify', as: "verification", token: TOKEN_REGEXP
   end

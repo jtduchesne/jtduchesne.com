@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :request do
+RSpec.describe Admin::UsersController, type: :request do
   before { login_as_admin }
   
   let!(:user) { FactoryBot.create(:user) }
@@ -8,22 +8,22 @@ RSpec.describe UsersController, type: :request do
   describe "GET" do
     let!(:action) { get url }
     
-    describe "/utilisateurs" do
+    describe "/admin/utilisateurs" do
       let(:url) { users_url }
       it { expect(response).to be_successful }
     end
     
-    describe "/utilisateur/:id" do
+    describe "/admin/utilisateur/:id" do
       let(:url) { user_url(user) }
       it { expect(response).to be_successful }
     end
     
-    describe "/utilisateur/nouveau" do
+    describe "/admin/utilisateur/nouveau" do
       let(:url) { new_user_url }
       it { expect(response).to be_successful }
     end
     
-    describe "/utilisateur/:id/modifier" do
+    describe "/admin/utilisateur/:id/modifier" do
       let(:url) { edit_user_url(user) }
       it { expect(response).to be_successful }
     end
@@ -35,7 +35,7 @@ RSpec.describe UsersController, type: :request do
   describe "POST" do
     let(:action) { post url, params: { user: attributes } }
     
-    describe "/utilisateurs" do
+    describe "/admin/utilisateurs" do
       let(:url) { users_url }
       
       context "with valid parameters" do
@@ -69,7 +69,7 @@ RSpec.describe UsersController, type: :request do
   describe "PATCH" do
     let(:action) { patch url, params: { user: new_attributes } }
     
-    describe "/utilisateur/:id" do
+    describe "/admin/utilisateur/:id" do
       let(:url) { user_url(user) }
       
       context "with valid parameters" do
@@ -103,7 +103,7 @@ RSpec.describe UsersController, type: :request do
   describe "DELETE" do
     let(:action) { delete url }
     
-    describe "/utilisateur/:id" do
+    describe "/admin/utilisateur/:id" do
       let(:url) { user_url(user) }
       
       it "destroys the requested user" do

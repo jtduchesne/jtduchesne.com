@@ -16,7 +16,7 @@ protected
         value: request.url,
         expires: 30.minutes
       }
-      redirect_to controller: 'session', action: 'new'
+      redirect_to controller: '/session', action: 'new'
     end
   end
   def require_admin

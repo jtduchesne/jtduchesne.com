@@ -1,15 +1,16 @@
 en:
-  users:
-    index:
-      title: Users
-      empty: There's no users yet...
-      
-      new: Add new user
-      confirm: Are you sure you want to delete %{email} ?
-    show:
-    new:
-      title: New user
-    edit:
+  admin:
+    users:
+      index:
+        title: Users
+        empty: There's no users yet...
+        
+        new: Add new user
+        confirm: Are you sure you want to delete %{email} ?
+      show:
+      new:
+        title: New user
+      edit:
   
   activerecord:
     models:
