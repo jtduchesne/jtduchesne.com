@@ -19,5 +19,3 @@
         %td
           - unless user.admin?
             = link_to t('destroy'), url_for(action: :destroy, id: user), method: :delete, data: { confirm: t('.confirm', email: user.email) }
-
-= link_to t('.new'), url_for(action: :new)

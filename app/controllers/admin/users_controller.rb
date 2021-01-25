@@ -12,24 +12,8 @@ class Admin::UsersController < Admin::AdminController
   def show
   end
 
-  # GET /users/new
-  def new
-    @user = User.new
-  end
-
   # GET /users/1/edit
   def edit
-  end
-
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to url_for(action: 'show', id: @user), notice: f(@user)
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /users/1
