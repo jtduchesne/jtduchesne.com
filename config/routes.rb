@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   scope "(:locale)/", locale: /fr|en/ do
     root 'home#index'
   end
+  scope "/admin/(:locale)/", locale: /fr|en/ do
+    root 'admin/admin#index', as: "admin"
+  end
   
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get    '/connexion',   to: 'session#new',     as: "fr_login"

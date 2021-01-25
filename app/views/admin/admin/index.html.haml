@@ -1,0 +1,7 @@
+%h5= t('.title')
+
+%ul.list-group.mt-4
+  %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between align-items-center text-reset",
+                                            href: url_for(controller: 'users', action: 'index')}
+    = t('admin.users.index.title')
+    %span.badge.badge-pill.badge-secondary= @users.count
