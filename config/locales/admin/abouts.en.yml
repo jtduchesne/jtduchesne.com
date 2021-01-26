@@ -6,6 +6,8 @@ en:
         empty: There's no pages yet...
         
         new: Create a new page
+        edit: Edit
+        delete: Delete
         confirm: Are you sure you want to delete this About page from %{created_at} ?
       show:
         title: This is a preview of the About page

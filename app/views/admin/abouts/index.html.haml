@@ -1,19 +1,18 @@
-%h1 Listing abouts
+%h5= t('.title')
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
+%ul.list-group.my-4
+  - if @abouts.blank?
+    %li.list-group-item
+      = t('.empty')
+  - else
     - @abouts.each do |about|
-      %tr
-        %td= link_to 'Show', about
-        %td= link_to 'Edit', edit_about_path(about)
-        %td= link_to 'Destroy', about, method: :delete, data: { confirm: 'Are you sure?' }
+      %li.list-group-item.list-group-item-action{class: "d-flex"}
+        %a.text-reset.mr-auto{href: url_for(action: 'show', id: about)}
+          \...
+        %span.text-muted.my-auto.mx-2= date = l(about.created_at.to_date)
+        = link_to url_for(action: 'edit', id: about), class: "my-auto mx-1", title: t('.edit') do
+          = image_tag("pencil.svg", size: "16", class: "close")
+        = link_to url_for(action: 'destroy', id: about), class: "my-auto mx-1", title: t('.delete'), method: :delete, data: { confirm: t('.confirm', created_at: date)} do
+          = image_tag("trash.svg", size: "16", class: "close")
 
-%br
-
-= link_to 'New About', new_about_path
+= link_to t('.new'), url_for(action: 'new')

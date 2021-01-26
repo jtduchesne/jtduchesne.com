@@ -1,10 +1,12 @@
 class Admin::AboutsController < Admin::AdminController
   before_action :set_about, only: [:show, :edit, :update, :destroy]
 
+  layout 'jumbotron'
+
   # GET /abouts
   # GET /abouts.json
   def index
-    @abouts = About.all
+    @abouts = About.all.reverse_order
   end
 
   # GET /abouts/1

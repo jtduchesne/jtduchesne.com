@@ -1,7 +1,8 @@
-%h1 Editing about
+%h5= t('.title')
+%small= t('.body')
 
 = render 'form'
 
-= link_to 'Show', @about
+= link_to t('show'), url_for(action: 'show', id: @about)
 \|
-= link_to 'Back', abouts_path
+= link_to t('back'), url_for(action: 'index')

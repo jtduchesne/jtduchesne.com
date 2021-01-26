@@ -1,6 +1,7 @@
-%p#notice= notice
+%h5= t('.title')
 
+\...
 
-= link_to 'Edit', edit_about_path(@about)
+= link_to t('edit'), url_for(action: 'edit', id: @about)
 \|
-= link_to 'Back', abouts_path
+= link_to t('back'), url_for(action: 'index')
