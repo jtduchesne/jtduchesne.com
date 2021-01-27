@@ -8,7 +8,7 @@
     - @abouts.each do |about|
       %li.list-group-item.list-group-item-action{class: "d-flex"}
         %a.text-reset.mr-auto{href: url_for(action: 'show', id: about)}
-          \...
+          = about.send(I18n.locale).to_plain_text.truncate_words(20)
         %span.text-muted.my-auto.mx-2= date = l(about.created_at.to_date)
         = link_to url_for(action: 'edit', id: about), class: "my-auto mx-1", title: t('.edit') do
           = image_tag("pencil.svg", size: "16", class: "close")

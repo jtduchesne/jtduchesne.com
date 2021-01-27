@@ -24,3 +24,5 @@ en:
       about: The About page
     attributes:
       about:
+        fr: French
+        en: English

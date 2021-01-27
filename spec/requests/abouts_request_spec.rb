@@ -3,117 +3,120 @@
 RSpec.describe Admin::AboutsController, type: :request do
   before { login_as_admin }
   
-  # About. As you add validations to About, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  describe "GET /index" do
-    it "renders a successful response" do
-      About.create! valid_attributes
-      get abouts_url
-      expect(response).to be_successful
+  let!(:about) { FactoryBot.create(:about) }
+  
+  describe "GET" do
+    let!(:action) { get url }
+    
+    describe "/admin/à-propos" do
+      let(:url) { abouts_url }
+      it { expect(response).to be_successful }
+    end
+    describe "/admin/à-propos/:id" do
+      let(:url) { about_url(about) }
+      it { expect(response).to be_successful }
+    end
+    describe "/admin/à-propos/nouveau" do
+      let(:url) { new_about_url }
+      it { expect(response).to be_successful }
+    end
+    describe "/admin/à-propos/:id/modifier" do
+      let(:url) { edit_about_url(about) }
+      it { expect(response).to be_successful }
     end
   end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      about = About.create! valid_attributes
-      get about_url(about)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_about_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "render a successful response" do
-      about = About.create! valid_attributes
-      get edit_about_url(about)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new About" do
-        expect {
-          post abouts_url, params: { about: valid_attributes }
-        }.to change(About, :count).by(1)
+  
+  let(:valid_attributes)   { FactoryBot.attributes_for(:about) }
+  let(:invalid_attributes) { FactoryBot.attributes_for(:about, fr: "") }
+  
+  describe "POST" do
+    let(:action) { post url, params: { about: attributes } }
+    
+    describe "/admin/à-propos" do
+      let(:url) { abouts_url }
+      
+      context "with valid parameters" do
+        let(:attributes) { valid_attributes }
+        
+        it "creates a new about" do
+          expect{ action }.to change(About, :count).by(1)
+        end
+        
+        it "redirects to the created about" do
+          action
+          expect(response).to redirect_to(about_url(About.order(:created_at).last))
+        end
       end
-
-      it "redirects to the created about" do
-        post abouts_url, params: { about: valid_attributes }
-        expect(response).to redirect_to(about_url(About.last))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new About" do
-        expect {
-          post abouts_url, params: { about: invalid_attributes }
-        }.to change(About, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post abouts_url, params: { about: invalid_attributes }
-        expect(response).to be_successful
+      
+      context "with invalid parameters" do
+        let(:attributes) { invalid_attributes }
+        
+        it "does not create a new about" do
+          expect{ action }.not_to change(About, :count)
+        end
+        
+        it "renders 'new' template" do
+          action
+          expect(response).to render_template(:new)
+        end
       end
     end
   end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested about" do
-        about = About.create! valid_attributes
-        patch about_url(about), params: { about: new_attributes }
-        about.reload
-        skip("Add assertions for updated state")
+  
+  describe "PATCH" do
+    let(:action) { patch url, params: { about: new_attributes } }
+    
+    describe "/admin/à-propos/:id" do
+      let(:url) { about_url(about) }
+      
+      context "with valid parameters" do
+        let(:new_attributes) { {fr: "Changé", en: "Changed"} }
+        
+        it "updates the requested about" do
+          expect{ action }.to change{ about.reload.fr.to_plain_text }
+        end
+        it "updates the requested about" do
+          expect{ action }.to change{ about.reload.en.to_plain_text }
+        end
+        
+        it "redirects to the about" do
+          action
+          expect(response).to redirect_to(about_url(about))
+        end
       end
-
-      it "redirects to the about" do
-        about = About.create! valid_attributes
-        patch about_url(about), params: { about: new_attributes }
-        about.reload
-        expect(response).to redirect_to(about_url(about))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        about = About.create! valid_attributes
-        patch about_url(about), params: { about: invalid_attributes }
-        expect(response).to be_successful
+      
+      context "with invalid parameters" do
+        let(:new_attributes) { invalid_attributes }
+        
+        it "does not update the requested about" do
+          expect{ action }.not_to change{ about.reload.fr.to_plain_text }
+        end
+        it "does not update the requested about" do
+          expect{ action }.not_to change{ about.reload.en.to_plain_text }
+        end
+        
+        it "renders 'edit' template" do
+          action
+          expect(response).to render_template(:edit)
+        end
       end
     end
   end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested about" do
-      about = About.create! valid_attributes
-      expect {
-        delete about_url(about)
-      }.to change(About, :count).by(-1)
-    end
-
-    it "redirects to the abouts list" do
-      about = About.create! valid_attributes
-      delete about_url(about)
-      expect(response).to redirect_to(abouts_url)
+  
+  describe "DELETE" do
+    let(:action) { delete url }
+    
+    describe "/admin/à-propos/:id" do
+      let(:url) { about_url(about) }
+      
+      it "destroys the requested about" do
+        expect{ action }.to change(About, :count).by(-1)
+      end
+      
+      it "redirects to the abouts list" do
+        action
+        expect(response).to redirect_to(abouts_url)
+      end
     end
   end
 end

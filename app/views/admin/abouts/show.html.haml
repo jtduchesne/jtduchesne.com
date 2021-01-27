@@ -1,6 +1,17 @@
 %h5= t('.title')
 
-\...
+%ul.nav.nav-tabs{role: "tablist", class: "justify-content-center"}
+  %li.nav-item{role: "presentation"}
+    %a.nav-link{id: "fr-tab", role: "tab", href: "#fr", class: "active",
+                data: {toggle: "tab"}, aria: {controls: "fr", selected: "true"}}= t('fr')
+  %li.nav-item{role: "presentation"}
+    %a.nav-link{id: "en-tab", role: "tab", href: "#en",
+                data: {toggle: "tab"}, aria: {controls: "en", selected: "false"}}= t('en')
+.tab-content.my-3
+  .tab-pane.fade{id: "fr", role: "tabpanel", aria: {labelledby: "fr-tab"}, class: "show active"}
+    = @about.fr
+  .tab-pane.fade{id: "en", role: "tabpanel", aria: {labelledby: "en-tab"}}
+    = @about.en
 
 = link_to t('edit'), url_for(action: 'edit', id: @about)
 \|

@@ -1,6 +1,19 @@
 = form_with model: @about, url: url_for_form(@about) do |f|
   - if @about.errors.any?
     = render 'form_errors', model: @about
-
+  
+  %ul.nav.nav-tabs{role: "tablist", class: "justify-content-center"}
+    %li.nav-item{role: "presentation"}
+      %a.nav-link{id: "fr-tab", role: "tab", href: "#fr", class: "active",
+                  data: { toggle: "tab" }, aria: { controls: "fr", selected: "true" }}= t('fr')
+    %li.nav-item{role: "presentation"}
+      %a.nav-link{id: "en-tab", role: "tab", href: "#en",
+                  data: { toggle: "tab" }, aria: { controls: "en", selected: "false" }}= t('en')
+  .tab-content.my-3
+    .tab-pane.fade{id: "fr", role: "tabpanel", aria: { labelledby: "fr-tab" }, class: "show active"}
+      = f.rich_text_area :fr
+    .tab-pane.fade{id: "en", role: "tabpanel", aria: { labelledby: "en-tab" }}
+      = f.rich_text_area :en
+  
   .form-group
     = f.submit class: "btn btn-primary"
