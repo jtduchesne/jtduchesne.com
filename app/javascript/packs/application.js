@@ -18,3 +18,6 @@ window.$ = window.jQuery = jQuery;
 document.addEventListener("turbolinks:load", function() {
   $('#toaster > .toast').toast('show');
 });
+
+require("trix")
+require("@rails/actiontext")

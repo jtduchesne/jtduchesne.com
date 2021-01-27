@@ -48,3 +48,5 @@ bundle install
 
 rails g scaffold About --no-assets --no-helper
 rails db:migrate
+
+rails action_text:install
