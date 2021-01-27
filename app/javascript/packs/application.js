@@ -17,6 +17,21 @@ window.$ = window.jQuery = jQuery;
 
 document.addEventListener("turbolinks:load", function() {
   $('#toaster > .toast').toast('show');
+  
+  $('input:file[data-preview]').each(function() {
+    const $img = $(`#${this.dataset.preview}`);
+    if ($img.length) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        $img.attr('src', e.target.result);
+      };
+      
+      $(this).on("change", function() {
+        let file = this.files[0];
+        if (file) reader.readAsDataURL(file);
+      });
+    }
+  });
 });
 
 require("trix")

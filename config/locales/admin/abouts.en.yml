@@ -24,5 +24,6 @@ en:
       about: The About page
     attributes:
       about:
+        image: Image
         fr: French
         en: English

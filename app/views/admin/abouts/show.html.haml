@@ -9,9 +9,19 @@
                 data: {toggle: "tab"}, aria: {controls: "en", selected: "false"}}= t('en')
 .tab-content.my-3
   .tab-pane.fade{id: "fr", role: "tabpanel", aria: {labelledby: "fr-tab"}, class: "show active"}
-    = @about.fr
+    .form-row
+      - if @about.image.attached?
+        .col-auto
+          = image_tag @about.image, width: 300
+      .col
+        = @about.fr
   .tab-pane.fade{id: "en", role: "tabpanel", aria: {labelledby: "en-tab"}}
-    = @about.en
+    .form-row
+      - if @about.image.attached?
+        .col-auto
+          = image_tag @about.image, width: 300
+      .col
+        = @about.en
 
 = link_to t('edit'), url_for(action: 'edit', id: @about)
 \|

@@ -1,0 +1,2 @@
+form.new_about .trix-button-group--file-tools,
+form.edit_about .trix-button-group--file-tools { display: none; }

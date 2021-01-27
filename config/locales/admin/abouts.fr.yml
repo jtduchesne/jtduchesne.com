@@ -24,5 +24,6 @@ fr:
       about: La page À-propos
     attributes:
       about:
+        image: Image
         fr: Français
         en: Anglais

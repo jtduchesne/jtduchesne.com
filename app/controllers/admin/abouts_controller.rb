@@ -69,6 +69,6 @@ private
   end
 
   def about_params
-    params.require(:about).permit(:fr, :en)
+    params.require(:about).permit(:image, :fr, :en)
   end
 end

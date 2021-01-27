@@ -4,12 +4,28 @@
   
   %ul.nav.nav-tabs{role: "tablist", class: "justify-content-center"}
     %li.nav-item{role: "presentation"}
+      %a.nav-link{id: "img-tab", role: "tab", href: "#img",
+                  data: { toggle: "tab" }, aria: { controls: "img", selected: "false" }}
+        = About.human_attribute_name(:image)
+    %li.nav-item{role: "presentation"}
       %a.nav-link{id: "fr-tab", role: "tab", href: "#fr", class: "active",
-                  data: { toggle: "tab" }, aria: { controls: "fr", selected: "true" }}= t('fr')
+                  data: { toggle: "tab" }, aria: { controls: "fr", selected: "true" }}
+        = About.human_attribute_name(:fr)
     %li.nav-item{role: "presentation"}
       %a.nav-link{id: "en-tab", role: "tab", href: "#en",
-                  data: { toggle: "tab" }, aria: { controls: "en", selected: "false" }}= t('en')
+                  data: { toggle: "tab" }, aria: { controls: "en", selected: "false" }}
+        = About.human_attribute_name(:en)
   .tab-content.my-3
+    .tab-pane.fade{id: "img", role: "tabpanel", aria: { labelledby: "img-tab" }}
+      .row.justify-content-center
+        .col-auto
+          = f.file_field :image, class: "form-control-file", data: { preview: "preview" }
+      .row.justify-content-center
+        .col-auto
+          - if @about.image.attached?
+            = image_tag @about.image, id: "preview", width: 300
+          - else
+            %img#preview.border{width: 300, height: 300}
     .tab-pane.fade{id: "fr", role: "tabpanel", aria: { labelledby: "fr-tab" }, class: "show active"}
       = f.rich_text_area :fr
     .tab-pane.fade{id: "en", role: "tabpanel", aria: { labelledby: "en-tab" }}
