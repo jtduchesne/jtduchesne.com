@@ -21,8 +21,11 @@ fr:
   logged_in:  Vous êtes maintenant connecté(e)
   logged_out: Vous êtes maintenant déconnecté(e)
   
-  back: Retour
+  draft: Brouillon
   
+  publish: Publier
   show:    Afficher
   edit:    Modifier
   destroy: Supprimer
+  
+  back: Retour

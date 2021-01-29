@@ -38,8 +38,8 @@ RSpec.describe Admin::AboutsController, type: :request do
       context "with valid parameters" do
         let(:attributes) { valid_attributes }
         
-        it "creates a new about" do
-          expect{ action }.to change(About, :count).by(1)
+        it "creates a new about (draft)" do
+          expect{ action }.to change(About.draft, :count).by(1)
         end
         
         it "redirects to the created about" do
@@ -69,6 +69,19 @@ RSpec.describe Admin::AboutsController, type: :request do
     describe "/admin/à-propos/:id" do
       let(:url) { about_url(about) }
       
+      context "with parameter 'published'" do
+        let(:new_attributes) { {published: "1"} }
+        
+        it "publishes the requested about" do
+          expect{ action }.to change{ about.reload.published }.from(false).to(true)
+        end
+        
+        it "redirects to the about" do
+          action
+          expect(response).to redirect_to(about_url(about))
+        end
+      end
+      
       context "with valid parameters" do
         let(:new_attributes) { {fr: "Changé", en: "Changed"} }
         
@@ -77,6 +90,10 @@ RSpec.describe Admin::AboutsController, type: :request do
         end
         it "updates the requested about" do
           expect{ action }.to change{ about.reload.en.to_plain_text }
+        end
+        
+        it "does not publish the requested about" do
+          expect{ action }.not_to change{ about.reload.published }.from(false)
         end
         
         it "redirects to the about" do
@@ -93,6 +110,10 @@ RSpec.describe Admin::AboutsController, type: :request do
         end
         it "does not update the requested about" do
           expect{ action }.not_to change{ about.reload.en.to_plain_text }
+        end
+        
+        it "does not publish the requested about" do
+          expect{ action }.not_to change{ about.reload.published }.from(false)
         end
         
         it "renders 'edit' template" do

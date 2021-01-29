@@ -8,9 +8,12 @@ en:
         new: Create a new page
         edit: Edit
         delete: Delete
-        confirm: Are you sure you want to delete this About page from %{created_at} ?
+        confirm: Are you sure you want to delete this About page from %{from} ?
       show:
-        title: This is a preview of the About page
+        title:
+          draft:   This is a preview of the About page
+          current: Showing since %{from}
+          past:    Showed from %{from} to %{to}
       new:
         title: New About page
       edit:
@@ -27,3 +30,5 @@ en:
         image: Image
         fr: French
         en: English
+        published_on: Published on
+        created_at: Created on

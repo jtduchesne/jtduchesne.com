@@ -1,4 +1,10 @@
-%h5= t('.title')
+%h5
+  - if @about.draft?
+    = t('.title.draft')
+  - elsif @about.current?
+    = t('.title.current', from: @about.from)
+  - else
+    = t('.title.past', from: @about.from, to: @about.to)
 
 %ul.nav.nav-tabs{role: "tablist", class: "justify-content-center"}
   %li.nav-item{role: "presentation"}
@@ -23,6 +29,16 @@
       .col
         = @about.en
 
-= link_to t('edit'), url_for(action: 'edit', id: @about)
-\|
-= link_to t('back'), url_for(action: 'index')
+.form-row.justify-content-center
+  - if @about.draft?
+    .col-auto
+      = form_with model: @about, url: url_for_form(@about) do |f|
+        = f.hidden_field :published, value: "1"
+        = f.submit t('publish'), class: "btn btn-warning"
+    .col-auto
+      = link_to t('edit'), url_for(action: 'edit', id: @about), class: "btn btn-primary"
+  - elsif @about.current?
+    .col-auto
+      = link_to t('edit'), url_for(action: 'edit', id: @about), class: "btn btn-primary"
+  .col-auto
+    = link_to t('back'), url_for(action: 'index'), class: "btn btn-secondary"

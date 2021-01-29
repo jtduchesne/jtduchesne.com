@@ -7,6 +7,7 @@ class Admin::AboutsController < Admin::AdminController
   # GET /abouts.json
   def index
     @abouts = About.all.reverse_order.send "with_rich_text_#{I18n.locale}"
+    @current = About.current
   end
 
   # GET /abouts/1
@@ -69,6 +70,6 @@ private
   end
 
   def about_params
-    params.require(:about).permit(:image, :fr, :en)
+    params.require(:about).permit(:image, :fr, :en, :published)
   end
 end

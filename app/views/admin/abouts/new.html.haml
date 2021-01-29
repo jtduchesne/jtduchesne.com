@@ -1,5 +1,8 @@
 %h5= t('.title')
 
-= render 'form'
-
-= link_to t('back'), url_for(action: 'index')
+= render 'form' do |f|
+  .form-row.justify-content-center
+    .col-auto
+      = f.submit class: "btn btn-primary"
+    .col-auto
+      = link_to t('back'), url_for(action: 'index'), class: "btn btn-secondary"

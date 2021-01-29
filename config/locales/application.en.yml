@@ -21,8 +21,11 @@ en:
   logged_in:  You are now logged in
   logged_out: You are now logged out
   
-  back: Back
+  draft: Draft
   
+  publish: Publish
   show:    Show
   edit:    Edit
   destroy: Delete
+  
+  back: Back

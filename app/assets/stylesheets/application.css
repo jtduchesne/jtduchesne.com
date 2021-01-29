@@ -39,3 +39,7 @@ main {
 .cursor-default {
   cursor: default;
 }
+
+.close.disabled {
+  opacity: .2;
+}

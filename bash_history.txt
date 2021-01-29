@@ -51,3 +51,6 @@ rails db:migrate
 
 rails action_text:install
 rails db:migrate
+
+rails g migration AddPublishedOnColumnToAbouts published_on:date
+rails db:migrate

@@ -8,9 +8,12 @@ fr:
         new: Créer une nouvelle page
         edit: Modifier
         delete: Supprimer
-        confirm: Êtes-vous sûr de vouloir supprimer cette page À-propos du %{created_at} ?
+        confirm: Êtes-vous sûr de vouloir supprimer cette page À-propos du %{from} ?
       show:
-        title: Ceci est un aperçu de la page À-propos
+        title:
+          draft:   Ceci est un aperçu de la page À-propos
+          current: Affichée depuis le %{from}
+          past:    Affichée du %{from} au %{to}
       new:
         title: Nouvelle page À-propos
       edit:
@@ -27,3 +30,5 @@ fr:
         image: Image
         fr: Français
         en: Anglais
+        published_on: Publiée le
+        created_at: Créée le

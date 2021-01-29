@@ -31,5 +31,4 @@
     .tab-pane.fade{id: "en", role: "tabpanel", aria: { labelledby: "en-tab" }}
       = f.rich_text_area :en
   
-  .form-group
-    = f.submit class: "btn btn-primary"
+  = yield f
