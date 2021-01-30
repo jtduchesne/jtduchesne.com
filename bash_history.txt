@@ -54,3 +54,5 @@ rails db:migrate
 
 rails g migration AddPublishedOnColumnToAbouts published_on:date
 rails db:migrate
+
+rails g model Message from subject body
