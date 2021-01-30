@@ -3,3 +3,11 @@ en:
     admin:
       index:
         title: Site administration
+        abouts:
+          date: Publication date of current About page
+          
+          published: Total number of different About pages
+          draft:     Number of drafts
+        users:
+          verified:   Number of verified users
+          unverified: Number of unverified users

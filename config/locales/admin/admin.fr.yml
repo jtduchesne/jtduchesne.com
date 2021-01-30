@@ -3,3 +3,11 @@ fr:
     admin:
       index:
         title: Administration du site
+        abouts:
+          date: Date de publication de la page À-propos actuelle
+          
+          published: Nombre total de pages À-propos publiée
+          draft:     Nombre de brouillons
+        users:
+          verified:   Nombre d'utilisateurs vérifié
+          unverified: Nombre d'utilisateurs en attente de vérification
