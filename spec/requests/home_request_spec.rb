@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Home", type: :request do
+RSpec.describe HomeController, type: :request do
 
   describe 'GET' do
     before { get url }
@@ -32,6 +32,14 @@ RSpec.describe "Home", type: :request do
       end
       it 'sets locale to :en' do
         expect(I18n.locale).to eq :en
+      end
+    end
+    
+    describe "/à-propos" do
+      let(:url) { about_url }
+      
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
       end
     end
   end

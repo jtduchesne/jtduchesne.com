@@ -6,10 +6,10 @@
 
 .nav.d-flex.justify-content-center
   %nav.nav{role: "navigation"}
-    %a.text-secondary.nav-link{href: "#", class: "active"}= t('sections.blog')
+    %a.text-secondary.nav-link{href: home_path, class: active_if(home_path)}= t('sections.blog')
     %a.text-secondary.nav-link{href: "#"}= t('sections.projects')
     %a.text-secondary.nav-link{href: "#"}= t('sections.contact')
-    %a.text-secondary.nav-link{href: "#"}= t('sections.about')
+    %a.text-secondary.nav-link{href: about_path, class: active_if(about_path)}= t('sections.about')
   %span.nav-link.cursor-default &middot;
   %small.my-auto
     %a.text-secondary.nav-link{href: "#", class: "dropdown-toggle dropdown-toggle-split",

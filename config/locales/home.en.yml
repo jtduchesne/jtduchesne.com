@@ -2,3 +2,6 @@ en:
   home:
     index:
       empty: Nothing to show for now...
+    about:
+      title: About me
+      empty: Nothing to show for now...

@@ -9,19 +9,19 @@ RSpec.describe Admin::AboutsController, type: :request do
     let!(:action) { get url }
     
     describe "/admin/à-propos" do
-      let(:url) { abouts_url }
+      let(:url) { admin_abouts_url }
       it { expect(response).to be_successful }
     end
     describe "/admin/à-propos/:id" do
-      let(:url) { about_url(about) }
+      let(:url) { admin_about_url(about) }
       it { expect(response).to be_successful }
     end
     describe "/admin/à-propos/nouveau" do
-      let(:url) { new_about_url }
+      let(:url) { new_admin_about_url }
       it { expect(response).to be_successful }
     end
     describe "/admin/à-propos/:id/modifier" do
-      let(:url) { edit_about_url(about) }
+      let(:url) { edit_admin_about_url(about) }
       it { expect(response).to be_successful }
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe Admin::AboutsController, type: :request do
     let(:action) { post url, params: { about: attributes } }
     
     describe "/admin/à-propos" do
-      let(:url) { abouts_url }
+      let(:url) { admin_abouts_url }
       
       context "with valid parameters" do
         let(:attributes) { valid_attributes }
@@ -44,7 +44,7 @@ RSpec.describe Admin::AboutsController, type: :request do
         
         it "redirects to the created about" do
           action
-          expect(response).to redirect_to(about_url(About.order(:created_at).last))
+          expect(response).to redirect_to(admin_about_url(About.order(:created_at).last))
         end
       end
       
@@ -67,7 +67,7 @@ RSpec.describe Admin::AboutsController, type: :request do
     let(:action) { patch url, params: { about: new_attributes } }
     
     describe "/admin/à-propos/:id" do
-      let(:url) { about_url(about) }
+      let(:url) { admin_about_url(about) }
       
       context "with parameter 'published'" do
         let(:new_attributes) { {published: "1"} }
@@ -78,7 +78,7 @@ RSpec.describe Admin::AboutsController, type: :request do
         
         it "redirects to the about" do
           action
-          expect(response).to redirect_to(about_url(about))
+          expect(response).to redirect_to(admin_about_url(about))
         end
       end
       
@@ -98,7 +98,7 @@ RSpec.describe Admin::AboutsController, type: :request do
         
         it "redirects to the about" do
           action
-          expect(response).to redirect_to(about_url(about))
+          expect(response).to redirect_to(admin_about_url(about))
         end
       end
       
@@ -128,7 +128,7 @@ RSpec.describe Admin::AboutsController, type: :request do
     let(:action) { delete url }
     
     describe "/admin/à-propos/:id" do
-      let(:url) { about_url(about) }
+      let(:url) { admin_about_url(about) }
       
       it "destroys the requested about" do
         expect{ action }.to change(About, :count).by(-1)
@@ -136,7 +136,7 @@ RSpec.describe Admin::AboutsController, type: :request do
       
       it "redirects to the abouts list" do
         action
-        expect(response).to redirect_to(abouts_url)
+        expect(response).to redirect_to(admin_abouts_url)
       end
     end
   end
