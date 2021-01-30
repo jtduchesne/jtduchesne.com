@@ -33,6 +33,8 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include AuthenticationHelper, type: :request
+  config.include URIHelper, type: [:request, :routing]
+  config.include_context "non-ASCII characters"
   
   config.include FactoryBot::Syntax::Methods
 

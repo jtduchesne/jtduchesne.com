@@ -2,8 +2,6 @@ require "rails_helper"
 
 RSpec.describe Admin::AboutsController, type: :routing do
   describe "FR routing" do
-    let(:à) { "%C3%A0" }
-    
     it { expect(get: "/admin/#{à}-propos").to   route_to("admin/abouts#index", locale: "fr") }
     it { expect(get: "/admin/#{à}-propos/1").to route_to("admin/abouts#show",  locale: "fr", id: "1") }
     
