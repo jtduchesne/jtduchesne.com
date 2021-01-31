@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
-    from { "MyString" }
-    subject { "MyString" }
-    body { "MyString" }
+    from    { Faker::Name.name }
+    subject { Faker::Lorem.sentence }
+    body    { Faker::Lorem.paragraph }
   end
 end
