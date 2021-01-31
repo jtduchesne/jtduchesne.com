@@ -5,6 +5,7 @@ class Admin::AdminController < ApplicationController
 
   # GET /admin
   def index
+    @messages = Message.all
     @abouts = About.all
     @users = User.all
   end

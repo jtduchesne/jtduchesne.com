@@ -1,6 +1,11 @@
-%p#notice= notice
+%h2= @message.subject
 
+%p
+  %strong= Message.human_attribute_name(:from) + " :"
+  = @message.from
 
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', admin_messages_path
+%p= @message.body
+
+.form-row.justify-content-center
+  .col-auto= link_to t('back'), url_for(action: 'index'), class: "btn btn-secondary"
+  .col-auto= link_to t('destroy'), url_for(action: 'destroy'), class: "btn btn-danger", method: :delete, data: { confirm: t('.confirm') }

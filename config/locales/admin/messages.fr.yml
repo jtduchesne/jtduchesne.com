@@ -1,0 +1,25 @@
+fr:
+  admin:
+    messages:
+      index:
+        title: Messages
+        empty: Aucun message
+        
+        new: Nouveau message
+        confirm: Supprimer ce message de %{from} ?
+      show:
+        title: "%{subject}"
+        
+        confirm: Êtes-vous sûr de vouloir supprimer ce message ?
+      new:
+        title: Nouveau message
+  
+  activerecord:
+    models:
+      message: Le message
+    attributes:
+      message:
+        from:    De
+        subject: Sujet
+        body:    Message
+        created_at: Reçu

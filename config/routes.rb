@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     root 'admin/admin#index', as: "admin"
   end
   
-  namespace :admin do
-    resources :messages
-  end
-  
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get '/à-propos', to: 'home#about', as: "fr_about"
     
@@ -22,6 +18,7 @@ Rails.application.routes.draw do
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
     scope '/admin', module: 'admin' do
+      resources :messages, path: "messages/fr", as: "fr_admin_messages", except: [:edit, :update]
       resources :abouts, path: "à-propos",     as: "fr_admin_abouts"
       resources :users,  path: "utilisateurs", as: "fr_admin_users", format: false
     end
@@ -38,6 +35,7 @@ Rails.application.routes.draw do
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
     scope '/admin', module: 'admin' do
+      resources :messages, path: "messages/en", as: "en_admin_messages", except: [:edit, :update]
       resources :abouts, as: "en_admin_abouts"
       resources :users,  as: "en_admin_users", format: false
     end
@@ -55,6 +53,7 @@ Rails.application.routes.draw do
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     
     namespace 'admin' do
+      resources :messages, path: "messages/fr", except: [:edit, :update]
       resources :abouts, path: "à-propos"
       resources :users,  path: "utilisateurs", format: false
     end

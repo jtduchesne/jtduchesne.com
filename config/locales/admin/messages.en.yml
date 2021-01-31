@@ -1,0 +1,25 @@
+en:
+  admin:
+    messages:
+      index:
+        title: Messages
+        empty: There's no messages
+        
+        new: New message
+        confirm: Delete this message from %{from} ?
+      show:
+        title: "%{subject}"
+        
+        confirm: Are you sure you want to delete this message ?
+      new:
+        title: New meassge
+  
+  activerecord:
+    models:
+      message: The message
+    attributes:
+      message:
+        from:    From
+        subject: Subject
+        body:    Message
+        created_at: Received
