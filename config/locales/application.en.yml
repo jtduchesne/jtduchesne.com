@@ -29,3 +29,10 @@ en:
   destroy: Delete
   
   back: Back
+  
+  datetime:
+    distance_in_words:
+      relative_date:
+        zero:  "%{time_ago}"
+        one:   "Yesterday %{time_ago}"
+        other: "%{time_ago} ago"

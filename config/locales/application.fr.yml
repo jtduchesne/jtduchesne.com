@@ -29,3 +29,10 @@ fr:
   destroy: Supprimer
   
   back: Retour
+  
+  datetime:
+    distance_in_words:
+      relative_date:
+        zero:  "%{time_ago}"
+        one:   "Hier à %{time_ago}"
+        other: "Il y a %{time_ago}"
