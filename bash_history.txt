@@ -57,3 +57,4 @@ rails db:migrate
 
 rails g model Message from subject body
 rails db:migrate
+rails g scaffold_controller Admin::Message --model-name=Message --no-assets --no-helper

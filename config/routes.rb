@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     root 'admin/admin#index', as: "admin"
   end
   
+  namespace :admin do
+    resources :messages
+  end
+  
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get '/à-propos', to: 'home#about', as: "fr_about"
     
