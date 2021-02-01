@@ -28,7 +28,7 @@ class Admin::MessagesController < Admin::AdminController
     respond_to do |format|
       if @message.save
         format.html { redirect_to url_for(action: 'index'), notice: f(@message) }
-        format.json { render :show, status: :created, location: @message }
+        format.json { render :show, status: :created, location: url_for(action: 'show', id: @message) }
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }

@@ -16,12 +16,6 @@ en:
         confirm: Are you sure you want to delete this message ?
       new:
         title: New message
-      
-      form:
-        subject:
-          message:    Simple message
-          suggestion: Suggestion
-          bug:        I found a bug !
   
   activerecord:
     models:

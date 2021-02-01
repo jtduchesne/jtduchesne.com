@@ -1,0 +1,13 @@
+fr:
+  messages:
+    new:
+      title: Contact
+    
+    create:
+      sent: Le message a été envoyé avec succès
+    
+    form:
+      subject:
+        message:    Simple message
+        suggestion: Suggestion
+        bug:        J'ai trouvé un bug !

@@ -42,6 +42,57 @@ RSpec.describe HomeController, type: :request do
         expect(response).to have_http_status(:success)
       end
     end
+    
+    describe "/contacter" do
+      let(:url) { contact_url }
+      
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
+
+  describe "POST" do
+    let(:action) { post url, params: params }
+    
+    describe "/contacter" do
+      let(:valid_attributes)   { FactoryBot.attributes_for(:message) }
+      let(:invalid_attributes) { FactoryBot.attributes_for(:message, body: "") }
+      
+      let(:url)    { contact_url }
+      let(:params) { { message: attributes } }
+      
+      context "with valid parameters" do
+        let(:attributes) { valid_attributes }
+        
+        it "creates a new message" do
+          expect{ action }.to change(Message, :count).by(1)
+        end
+        
+        it "redirects back to the contact page" do
+          action
+          expect(response).to redirect_to(contact_url)
+        end
+        it "sets a successful flash notice" do
+          action
+          expect(flash.to_hash).to have_key("notice")
+          expect(flash[:notice]).to include("message").and include("envoyé")
+        end
+      end
+      
+      context "with invalid parameters" do
+        let(:attributes) { invalid_attributes }
+        
+        it "does not create a new message" do
+          expect{ action }.not_to change(Message, :count)
+        end
+        
+        it "renders 'new' template" do
+          action
+          expect(response).to render_template(:new)
+        end
+      end
+    end
   end
 
 end

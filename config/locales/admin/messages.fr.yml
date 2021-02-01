@@ -16,12 +16,6 @@ fr:
         confirm: Êtes-vous sûr de vouloir supprimer ce message ?
       new:
         title: Nouveau message
-      
-      form:
-        subject:
-          message:    Simple message
-          suggestion: Suggestion
-          bug:        J'ai trouvé un bug !
   
   activerecord:
     models:

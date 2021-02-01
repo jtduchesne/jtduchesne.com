@@ -60,3 +60,4 @@ rails db:migrate
 rails g scaffold_controller Admin::Message --model-name=Message --no-assets --no-helper
 rails g migration ChangeMessageBodyDefault
 rails db:migrate
+rails g controller Message new create --no-assets --no-helper

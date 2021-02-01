@@ -6,6 +6,9 @@ module UrlHelper
   def home_path
     url_for(controller: '/home', action: 'index')
   end
+  def contact_path
+    url_for(controller: '/messages', action: 'new')
+  end
   def about_path
     url_for(controller: '/home', action: 'about')
   end

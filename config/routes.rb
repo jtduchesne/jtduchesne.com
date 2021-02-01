@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
+    get  '/contacter', to: 'messages#new',    as: "fr_contact"
+    post '/contacter', to: 'messages#create', as: ""
     get '/à-propos', to: 'home#about', as: "fr_about"
     
     get    '/connexion',   to: 'session#new',     as: "fr_login"
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
     get '/fr/:token', to: 'session#verify', as: "fr_verification", token: TOKEN_REGEXP
   end
   scope locale: 'en' do
+    get '/contact',  to: 'messages#new',    as: "en_contact"
+    post '/contact', to: 'messages#create', as: ""
     get '/about', to: 'home#about', as: "en_about"
     
     get    '/login',  to: 'session#new',     as: "en_login"
@@ -44,6 +48,8 @@ Rails.application.routes.draw do
   end
   
   scope path_names: {new: "nouveau", edit: "modifier"} do
+    get  '/contacter', to: 'messages#new',    as: "contact"
+    post '/contacter', to: 'messages#create', as: ""
     get '/à-propos', to: 'home#about', as: "about"
     
     get    '/connexion',   to: 'session#new',     as: "login"

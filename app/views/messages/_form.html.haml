@@ -3,8 +3,8 @@
     = render 'form_errors', model: @message
 
   .form-group
-    = f.label :from
-    = f.text_field :from, class: "form-control"
+    = f.label :from, class: "sr-only"
+    = f.text_field :from, class: "form-control", placeholder: Message.human_attribute_name(:from)
   .form-group.text-center.mb-0
     = f.label :subject
     = f.select :subject, options_for_subject(@message), class: "form-control"

@@ -1,0 +1,6 @@
+%h4.text-center= t('.title')
+
+= render 'form' do |f|
+  .form-row.justify-content-center
+    .col-auto
+      = f.submit t('send'), class: "btn btn-primary"

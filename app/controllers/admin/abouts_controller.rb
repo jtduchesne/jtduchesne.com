@@ -32,7 +32,7 @@ class Admin::AboutsController < Admin::AdminController
     respond_to do |format|
       if @about.save
         format.html { redirect_to url_for(action: 'show', id: @about), notice: f(@about) }
-        format.json { render :show, status: :created, location: @about }
+        format.json { render :show, status: :created, location: url_for(action: 'show', id: @about) }
       else
         format.html { render :new }
         format.json { render json: @about.errors, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class Admin::AboutsController < Admin::AdminController
     respond_to do |format|
       if @about.update(about_params)
         format.html { redirect_to url_for(action: 'show', id: @about), notice: f(@about) }
-        format.json { render :show, status: :ok, location: @about }
+        format.json { render :show, status: :ok, location: url_for(action: 'show', id: @about) }
       else
         format.html { render :edit }
         format.json { render json: @about.errors, status: :unprocessable_entity }
