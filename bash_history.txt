@@ -63,3 +63,4 @@ rails db:migrate
 rails g controller Message new create --no-assets --no-helper
 
 rails g scaffold Project name description url github_url
+rails db:migrate

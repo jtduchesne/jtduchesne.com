@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      project: The project
+    attributes:
+      project:
+        name:        Name
+        description: Description
+        live_url:    Project's live URL
+        github_url:  Github URL
