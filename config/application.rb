@@ -43,8 +43,10 @@ module Jtduchesne
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
       
+      g.assets false
       g.scaffold_stylesheet false
       
+      g.helper_specs false
       g.view_specs   false
       g.system_tests nil
     end
