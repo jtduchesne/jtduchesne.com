@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     root 'admin/admin#index', as: "admin"
   end
   
+  resources :projects
+  
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get  '/contacter', to: 'messages#new',    as: "fr_contact"
     post '/contacter', to: 'messages#create', as: ""
