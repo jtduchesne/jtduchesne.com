@@ -3,6 +3,8 @@ class Message < ApplicationRecord
   
   validates_presence_of :from, :subject, :body
   
+  enum subject: %w(message suggestion bug).map{ |v| [v, v] }.to_h
+  
   default_scope -> { order(:created_at) }
   scope :read,   -> { where("created_at <> updated_at") }
   scope :unread, -> { where("created_at = updated_at") }

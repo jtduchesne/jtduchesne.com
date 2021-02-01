@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
     from    { Faker::Name.name }
-    subject { Faker::Lorem.sentence }
+    subject { Message.subjects.keys.sample }
     body    { Faker::Lorem.paragraph }
     
     trait :unread do

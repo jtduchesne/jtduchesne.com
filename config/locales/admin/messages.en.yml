@@ -2,7 +2,10 @@ en:
   admin:
     messages:
       index:
-        title: Messages
+        subjects:
+          message:    Messages
+          suggestion: Suggestions
+          bug:        Bugs
         empty: There's no messages
         
         new: New message
@@ -12,7 +15,13 @@ en:
         
         confirm: Are you sure you want to delete this message ?
       new:
-        title: New meassge
+        title: New message
+      
+      form:
+        subject:
+          message:    Simple message
+          suggestion: Suggestion
+          bug:        I found a bug !
   
   activerecord:
     models:

@@ -1,30 +1,47 @@
-%h1= t('.title')
+- subjects = Message.subjects.keys
+%ul.nav.nav-tabs{role: "tablist"}
+  - style = {"message" => "active"}
+  - subjects.each do |subject|
+    %li.nav-item{role: "presentation"}
+      %a.nav-link{id: "#{subject}-tab", role: "tab", href: "##{subject}", class: style[subject],
+                  data: {toggle: "tab"}, aria: {controls: subject, selected: "true"}}
+        = t('.subjects.'+ subject)
+        - if (count = @messages.send(subject).unread.count) > 0
+          %span.badge.badge-pill.badge-danger.mx-1= count
 
-%table.table.table-sm.table-hover.pb-3
-  - if @messages.empty?
-    %tbody
-      %tr
-        %td= t('.empty')
-  - else
-    %thead
-      %tr
-        %th{scope: "col", style: "width: 100%"}
-        %th{scope: "col", style: "width: auto"}= Message.human_attribute_name(:from)
-        %th{scope: "col", style: "width: auto"}= Message.human_attribute_name(:created_at)
-        %th{scope: "col"}
-
-    %tbody
-      - @messages.each do |message|
-        %tr{class: ("font-weight-bold" if message.unread?)}
-          %td
-            = link_to url_for(action: 'show', id: message), class: "text-reset" do
-              = message.body.truncate_words(10)
-          %td
-            %span.text-nowrap= message.from
-          %td.px-2{title: l(message.created_at)}
-            %span.text-nowrap= relative_date(message.created_at)
-          %td.align-middle
-            = link_to url_for(action: 'destroy', id: message), title: t('destroy'), method: :delete, data: { confirm: t('.confirm', from: message.from)} do
-              = image_tag("trash.svg", size: "16", class: "close")
+.tab-content
+  - style = {"message" => "show active"}
+  - subjects.each do |subject|
+    .tab-pane.fade{id: subject, role: "tabpanel", aria: {labelledby: "#{subject}-tab"}, class: style[subject]}
+      - messages = @messages.send subject
+      - if messages.empty?
+        %table.table.table-sm.pb-3
+          %thead
+            %tr
+              %th.border-top-0{scope: "col"} &nbsp;
+            %tbody
+              %tr
+                %td= t('.empty')
+      - else
+        %table.table.table-sm.table-hover.pb-3
+          %thead
+            %tr
+              %th.border-top-0{scope: "col", style: "width: 100%"}
+              %th.border-top-0{scope: "col", style: "width: auto"}= Message.human_attribute_name(:from)
+              %th.border-top-0{scope: "col", style: "width: auto"}= Message.human_attribute_name(:created_at)
+              %th.border-top-0{scope: "col"}
+          %tbody
+            - messages.each do |message|
+              %tr{class: ("font-weight-bold" if message.unread?)}
+                %td
+                  = link_to url_for(action: 'show', id: message), class: "text-reset" do
+                    = message.body.truncate_words(10)
+                %td
+                  %span.text-nowrap= message.from
+                %td.px-2{title: l(message.created_at)}
+                  %span.text-nowrap= relative_date(message.created_at)
+                %td.align-middle
+                  = link_to url_for(action: 'destroy', id: message), title: t('destroy'), method: :delete, data: { confirm: t('.confirm', from: message.from)} do
+                    = image_tag("trash.svg", size: "16", class: "close")
 
 = link_to t('.new'), url_for(action: 'new')

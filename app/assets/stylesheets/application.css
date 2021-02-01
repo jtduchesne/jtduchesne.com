@@ -43,3 +43,7 @@ main {
 .close.disabled {
   opacity: .2;
 }
+
+textarea {
+  min-height: 100px;
+}

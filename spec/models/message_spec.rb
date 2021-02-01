@@ -19,6 +19,9 @@ RSpec.describe Message, type: :model do
     let!(:read)   { FactoryBot.create(:message, :read) }
     let!(:unread) { FactoryBot.create(:message, :unread) }
     
+    let!(:suggestion) { FactoryBot.create(:message, :suggestion) }
+    let!(:bug)        { FactoryBot.create(:message, :bug) }
+    
     describe ".read" do
       subject { Message.read }
       
@@ -30,6 +33,19 @@ RSpec.describe Message, type: :model do
       
       it { is_expected.not_to include read }
       it { is_expected.to include unread }
+    end
+    
+    describe ".suggestion" do
+      subject { Message.suggestion }
+      
+      it { is_expected.to include suggestion }
+      it { is_expected.not_to include bug }
+    end
+    describe ".bug" do
+      subject { Message.bug }
+      
+      it { is_expected.not_to include suggestion }
+      it { is_expected.to include bug }
     end
   end
   
