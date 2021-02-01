@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     root 'admin/admin#index', as: "admin"
   end
   
-  resources :projects
-  
   scope locale: 'fr', path_names: {new: "nouveau", edit: "modifier"} do
     get  '/contacter', to: 'messages#new',    as: "fr_contact"
     post '/contacter', to: 'messages#create', as: ""
@@ -20,6 +18,8 @@ Rails.application.routes.draw do
     patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
+    
+    resources :projects, path: "projets", as: "fr_projects"
     
     scope '/admin', module: 'admin' do
       resources :messages, path: "messages/fr", as: "fr_admin_messages", except: [:edit, :update]
@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
+    resources :projects, as: "en_projects"
+    
     scope '/admin', module: 'admin' do
       resources :messages, path: "messages/en", as: "en_admin_messages", except: [:edit, :update]
       resources :abouts, as: "en_admin_abouts"
@@ -59,6 +61,8 @@ Rails.application.routes.draw do
     patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
+    
+    resources :projects, path: "projets"
     
     namespace 'admin' do
       resources :messages, path: "messages/fr", except: [:edit, :update]

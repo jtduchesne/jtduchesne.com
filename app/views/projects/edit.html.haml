@@ -1,7 +1,7 @@
-%h1 Editing project
+%h4= t('.title', name: @project.name)
 
 = render 'form'
 
-= link_to 'Show', @project
+= link_to t('show'), url_for(action: 'show', id: @project)
 \|
-= link_to 'Back', projects_path
+= link_to t('back'), url_for(action: 'index')

@@ -1,18 +1,16 @@
-%p#notice= notice
-
 %p
-  %b Name:
+  %b= Project.human_attribute_name(:name) + " :"
   = @project.name
 %p
-  %b Description:
+  %b= Project.human_attribute_name(:description) + " :"
   = @project.description
 %p
-  %b Live url:
+  %b= Project.human_attribute_name(:live_url) + " :"
   = @project.live_url
 %p
-  %b Github url:
+  %b= Project.human_attribute_name(:github_url) + " :"
   = @project.github_url
 
-= link_to 'Edit', edit_project_path(@project)
+= link_to t('edit'), url_for(action: 'edit', id: @project)
 \|
-= link_to 'Back', projects_path
+= link_to t('back'), url_for(action: 'index')

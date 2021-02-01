@@ -1,12 +1,12 @@
-%h1 Listing projects
+%h4= t('.title')
 
 %table
   %thead
     %tr
-      %th Name
-      %th Description
-      %th Live url
-      %th Github url
+      %th= Project.human_attribute_name(:name)
+      %th= Project.human_attribute_name(:description)
+      %th= Project.human_attribute_name(:live_url)
+      %th= Project.human_attribute_name(:github_url)
       %th
       %th
       %th
@@ -18,10 +18,10 @@
         %td= project.description
         %td= project.live_url
         %td= project.github_url
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to t('show'), url_for(action: 'show', id: project)
+        %td= link_to t('edit'), url_for(action: 'edit', id: project)
+        %td= link_to t('destroy'), url_for(action: 'destroy', id: project), method: :delete, data: { confirm: t('.confirm', name: project.name) }
 
 %br
 
-= link_to 'New Project', new_project_path
+= link_to t('.new'), url_for(action: 'new')

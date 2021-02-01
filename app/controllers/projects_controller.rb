@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
+        format.html { redirect_to url_for(action: 'show', id: @project), notice: f(@project) }
+        format.json { render :show, status: :created, location: url_for(action: 'show', id: @project) }
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { render :show, status: :ok, location: @project }
+        format.html { redirect_to url_for(action: 'show', id: @project), notice: f(@project) }
+        format.json { render :show, status: :ok, location: url_for(action: 'show', id: @project) }
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -56,19 +56,17 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to url_for(action: 'index'), notice: f(@project) }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
+private
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name, :description, :live_url, :github_url)
-    end
+  def project_params
+    params.require(:project).permit(:name, :description, :live_url, :github_url)
+  end
 end

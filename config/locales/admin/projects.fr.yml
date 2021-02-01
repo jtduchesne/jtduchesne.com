@@ -1,4 +1,19 @@
 fr:
+  projects:
+    index:
+      title: Projets
+      empty: Aucun projet pour l'instant...
+      
+      new: Ajouter un nouveau projet
+      edit: Modifier
+      delete: Supprimer
+      confirm: Êtes-vous sûr de vouloir supprimer le projet '%{name}' ?
+    show:
+    new:
+      title: Nouveau projet
+    edit:
+      title: Modification de '%{name}'
+  
   activerecord:
     models:
       project: Le projet
