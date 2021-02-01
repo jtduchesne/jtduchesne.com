@@ -15,6 +15,11 @@ RSpec.describe Admin::MessagesController, type: :request do
     describe "/admin/messages/:id" do
       let(:url) { admin_message_url(message) }
       it { expect(response).to be_successful }
+      
+      it "sets message#read?" do
+        expect(message.read?).to be false
+        expect(message.reload.read?).to be true
+      end
     end
     describe "/admin/messages/nouveau" do
       let(:url) { new_admin_message_url }
@@ -38,9 +43,9 @@ RSpec.describe Admin::MessagesController, type: :request do
           expect{ action }.to change(Message, :count).by(1)
         end
         
-        it "redirects to the created message" do
+        it "redirects to the messages list" do
           action
-          expect(response).to redirect_to(admin_message_url(Message.order(:created_at).last))
+          expect(response).to redirect_to(admin_messages_url)
         end
       end
       

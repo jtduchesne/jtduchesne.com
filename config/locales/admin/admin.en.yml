@@ -3,6 +3,12 @@ en:
     admin:
       index:
         title: Site administration
+        
+        messages:
+          unread:
+            zero:  "No unread messages"
+            one:   "1 unread message"
+            other: "%{count} unread messages"
         abouts:
           date: Publication date of current About page
           

@@ -8,15 +8,20 @@
   - else
     %thead
       %tr
-        %th{scope: "col", style: "width: 100%"}= Message.human_attribute_name(:subject)
+        %th{scope: "col", style: "width: 100%"}
+        %th{scope: "col", style: "width: auto"}= Message.human_attribute_name(:from)
         %th{scope: "col", style: "width: auto"}= Message.human_attribute_name(:created_at)
         %th{scope: "col"}
 
     %tbody
       - @messages.each do |message|
-        %tr
-          %td= link_to message.subject, url_for(action: 'show', id: message), class: "text-reset"
-          %td{title: l(message.created_at)}
+        %tr{class: ("font-weight-bold" if message.unread?)}
+          %td
+            = link_to url_for(action: 'show', id: message), class: "text-reset" do
+              = message.body.truncate_words(10)
+          %td
+            %span.text-nowrap= message.from
+          %td.px-2{title: l(message.created_at)}
             %span.text-nowrap= relative_date(message.created_at)
           %td.align-middle
             = link_to url_for(action: 'destroy', id: message), title: t('destroy'), method: :delete, data: { confirm: t('.confirm', from: message.from)} do

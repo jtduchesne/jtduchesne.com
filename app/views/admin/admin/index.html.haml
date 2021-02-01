@@ -1,12 +1,12 @@
-%h5= t('.title')
+.d-flex.w-100.justify-content-between
+  %h5= t('.title')
+  %a.position-relative{href: url_for(controller: 'messages', action: 'index'),
+                       title: t('.messages.unread', count: @messages.unread.count)}
+    = image_tag("message.svg", size: "24", class: "mx-3 close")
+    %span.badge.badge-pill.badge-danger.position-absolute{style: "left: 0;"}
+      = @messages.unread.count
 
 .list-group.mt-4
-  %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
-                                            href: url_for(controller: 'messages', action: 'index')}
-    = t('admin.messages.index.title')
-    %div
-      %span.badge.badge-pill.badge-primary= @messages.count
-  
   %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
                                             href: url_for(controller: 'abouts', action: 'index')}
     = t('admin.abouts.index.title')

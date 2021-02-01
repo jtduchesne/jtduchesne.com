@@ -1,10 +1,13 @@
 %h2= @message.subject
 
-%p
+%p.my-0
   %strong= Message.human_attribute_name(:from) + " :"
   = @message.from
+%p.my-0
+  %strong= Message.human_attribute_name(:created_at) + " :"
+  = l(@message.created_at)
 
-%p= @message.body
+%p.my-3= @message.body
 
 .form-row.justify-content-center
   .col-auto= link_to t('back'), url_for(action: 'index'), class: "btn btn-secondary"

@@ -12,6 +12,7 @@ class Admin::MessagesController < Admin::AdminController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @message.read! unless request.xhr?
   end
 
   # GET /messages/new
@@ -26,7 +27,7 @@ class Admin::MessagesController < Admin::AdminController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to url_for(action: 'show', id: @message), notice: f(@message) }
+        format.html { redirect_to url_for(action: 'index'), notice: f(@message) }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }

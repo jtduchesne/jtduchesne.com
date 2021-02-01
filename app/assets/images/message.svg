@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"
+	 viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<path id="path3192" fill="#FFFFFF" stroke="#000000" stroke-width="1.875" stroke-linejoin="bevel" stroke-miterlimit="1" d="M1,31
+	h30V11L17,1h-2L1,11V31z"/>
+<path id="path3198" fill="none" stroke="#000000" stroke-width="1.875" stroke-linejoin="bevel" stroke-miterlimit="1" d="M31,11
+	L17,23h-2L1,11"/>
+<path id="path3196" fill="#FFFFFF" stroke="#000000" stroke-width="1.875" stroke-linejoin="bevel" stroke-miterlimit="1" d="M31,31
+	H1l14-12h2L31,31z"/>
+<line fill="none" stroke="#000000" stroke-width="0.9375" stroke-miterlimit="10" stroke-opacity="0.2" x1="1.207" y1="11" x2="30.793" y2="11"/>
+</svg>

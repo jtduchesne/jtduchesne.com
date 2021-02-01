@@ -3,6 +3,12 @@ fr:
     admin:
       index:
         title: Administration du site
+        
+        messages:
+          unread:
+            zero:  "Pas de nouveau message"
+            one:   "1 nouveau message"
+            other: "%{count} nouveaux messages"
         abouts:
           date: Date de publication de la page À-propos actuelle
           
