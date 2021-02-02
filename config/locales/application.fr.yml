@@ -29,7 +29,8 @@ fr:
   edit:    Modifier
   destroy: Supprimer
   
-  back: Retour
+  back:  Retour
+  close: Fermer
   
   datetime:
     distance_in_words:
