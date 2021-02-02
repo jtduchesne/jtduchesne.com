@@ -6,15 +6,22 @@
       = t('.empty')
   - else
     - @projects.each do |project|
-      %li.list-group-item.list-group-item-action
-        .d-flex.w-100
-          %h5.mb-0.mr-auto= link_to project.name, url_for(action: 'show', id: project), class: "text-reset"
-          = link_to url_for(action: 'edit', id: project), class: "my-auto mx-1", title: t('edit') do
-            = image_tag("pencil.svg", size: "16", class: "close")
-          = link_to url_for(action: 'destroy', id: project), class: "my-auto mx-1", title: t('destroy'), method: :delete, data: { confirm: t('.confirm', name: project.name)} do
-            = image_tag("trash.svg", size: "16", class: "close")
-        %p.mb-0= project.description
-        - link = project.live_url.presence || project.github_url
-        %a.small.text-reset.text-muted{href: link, target: "_blank"}= link
+      %li.list-group-item.list-group-item-action.p-0
+        .row.no-gutters
+          - url = url_for(action: 'show', id: project)
+          - if project.image.attached?
+            .col-auto.p-1
+              %a{href: url}
+                = image_tag project.image.variant(resize_to_limit: [150, 150])
+          .col.p-3
+            .d-flex.w-100
+              %h5.mb-0.mr-auto= link_to project.name, url, class: "text-reset"
+              = link_to url_for(action: 'edit', id: project), class: "my-auto mx-1", title: t('edit') do
+                = image_tag("pencil.svg", size: "16", class: "close")
+              = link_to url_for(action: 'destroy', id: project), class: "my-auto mx-1", title: t('destroy'), method: :delete, data: { confirm: t('.confirm', name: project.name)} do
+                = image_tag("trash.svg", size: "16", class: "close")
+            %p.mb-0= link_to project.description, url, class: "text-reset"
+            - link = project.live_url.presence || project.github_url
+            %a.small.text-reset.text-muted{href: link, target: "_blank"}= link
 
 = link_to t('.new'), url_for(action: 'new')

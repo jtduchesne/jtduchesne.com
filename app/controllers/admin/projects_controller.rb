@@ -67,6 +67,6 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :live_url, :github_url)
+    params.require(:project).permit(:name, :description, :live_url, :github_url, :image)
   end
 end
