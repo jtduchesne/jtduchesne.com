@@ -1,27 +1,20 @@
 %h4= t('.title')
 
-%table
-  %thead
-    %tr
-      %th= Project.human_attribute_name(:name)
-      %th= Project.human_attribute_name(:description)
-      %th= Project.human_attribute_name(:live_url)
-      %th= Project.human_attribute_name(:github_url)
-      %th
-      %th
-      %th
-
-  %tbody
+%ul.list-group.my-4
+  - if @projects.empty?
+    %li.list-group-item
+      = t('.empty')
+  - else
     - @projects.each do |project|
-      %tr
-        %td= project.name
-        %td= project.description
-        %td= project.live_url
-        %td= project.github_url
-        %td= link_to t('show'), url_for(action: 'show', id: project)
-        %td= link_to t('edit'), url_for(action: 'edit', id: project)
-        %td= link_to t('destroy'), url_for(action: 'destroy', id: project), method: :delete, data: { confirm: t('.confirm', name: project.name) }
-
-%br
+      %li.list-group-item.list-group-item-action
+        .d-flex.w-100
+          %h5.mb-0.mr-auto= link_to project.name, url_for(action: 'show', id: project), class: "text-reset"
+          = link_to url_for(action: 'edit', id: project), class: "my-auto mx-1", title: t('.edit') do
+            = image_tag("pencil.svg", size: "16", class: "close")
+          = link_to url_for(action: 'destroy', id: project), class: "my-auto mx-1", title: t('.delete'), method: :delete, data: { confirm: t('.confirm', name: project.name)} do
+            = image_tag("trash.svg", size: "16", class: "close")
+        %p.mb-0= project.description
+        - link = project.live_url.presence || project.github_url
+        %a.small.text-reset.text-muted{href: link, target: "_blank"}= link
 
 = link_to t('.new'), url_for(action: 'new')

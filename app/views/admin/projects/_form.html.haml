@@ -2,17 +2,17 @@
   - if @project.errors.any?
     = render 'form_errors', model: @project
 
-  .field
+  .form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group
     = f.label :description
-    = f.text_field :description
-  .field
+    = f.text_area :description, class: "form-control"
+  .form-group
     = f.label :live_url
-    = f.text_field :live_url
-  .field
+    = f.url_field :live_url, class: "form-control"
+  .form-group
     = f.label :github_url
-    = f.text_field :github_url
-  .actions
-    = f.submit
+    = f.url_field :github_url, class: "form-control"
+  
+  = yield f

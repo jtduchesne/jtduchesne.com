@@ -9,6 +9,8 @@ en:
             zero:  "No unread messages"
             one:   "1 unread message"
             other: "%{count} unread messages"
+        projects:
+          Projects count
         abouts:
           date: Publication date of current About page
           

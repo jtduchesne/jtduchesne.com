@@ -8,6 +8,12 @@
 
 .list-group.mt-4
   %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
+                                            href: url_for(controller: 'projects', action: 'index')}
+    = t('admin.projects.index.title')
+    %div
+      %span.badge.badge-pill.badge-primary{title: t('.projects')}= @projects.count
+  
+  %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
                                             href: url_for(controller: 'abouts', action: 'index')}
     = t('admin.abouts.index.title')
     %div

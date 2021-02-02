@@ -9,6 +9,8 @@ fr:
             zero:  "Pas de nouveau message"
             one:   "1 nouveau message"
             other: "%{count} nouveaux messages"
+        projects:
+          Nombre de projets
         abouts:
           date: Date de publication de la page À-propos actuelle
           
