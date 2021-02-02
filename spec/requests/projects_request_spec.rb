@@ -1,25 +1,27 @@
  require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :request do
+RSpec.describe Admin::ProjectsController, type: :request do
+  before { login_as_admin }
+  
   let!(:project) { FactoryBot.create(:project) }
   
   describe "GET" do
     let!(:action) { get url }
     
-    describe "/projects" do
-      let(:url) { projects_url }
+    describe "/admin/projets" do
+      let(:url) { admin_projects_url }
       it { expect(response).to be_successful }
     end
-    describe "/projects/:id" do
-      let(:url) { project_url(project) }
+    describe "/admin/projets/:id" do
+      let(:url) { admin_project_url(project) }
       it { expect(response).to be_successful }
     end
-    describe "/projects/new" do
-      let(:url) { new_project_url }
+    describe "/admin/projets/nouveau" do
+      let(:url) { new_admin_project_url }
       it { expect(response).to be_successful }
     end
-    describe "/projects/:id/edit" do
-      let(:url) { edit_project_url(project) }
+    describe "/admin/projets/:id/modifier" do
+      let(:url) { edit_admin_project_url(project) }
       it { expect(response).to be_successful }
     end
   end
@@ -30,8 +32,8 @@ RSpec.describe ProjectsController, type: :request do
   describe "POST" do
     let(:action) { post url, params: { project: attributes } }
     
-    describe "/projects" do
-      let(:url) { projects_url }
+    describe "/admin/projets" do
+      let(:url) { admin_projects_url }
       
       context "with valid parameters" do
         let(:attributes) { valid_attributes }
@@ -42,7 +44,7 @@ RSpec.describe ProjectsController, type: :request do
         
         it "redirects to the created project" do
           action
-          expect(response).to redirect_to(project_url(Project.order(:created_at).last))
+          expect(response).to redirect_to(admin_project_url(Project.order(:created_at).last))
         end
       end
       
@@ -64,8 +66,8 @@ RSpec.describe ProjectsController, type: :request do
   describe "PATCH" do
     let(:action) { patch url, params: { project: new_attributes } }
     
-    describe "/projects/:id" do
-      let(:url) { project_url(project) }
+    describe "/admin/projets/:id" do
+      let(:url) { admin_project_url(project) }
       
       context "with valid parameters" do
         let(:new_attributes) { {name: "Changed"} }
@@ -76,7 +78,7 @@ RSpec.describe ProjectsController, type: :request do
         
         it "redirects to the project" do
           action
-          expect(response).to redirect_to(project_url(project))
+          expect(response).to redirect_to(admin_project_url(project))
         end
       end
       
@@ -98,8 +100,8 @@ RSpec.describe ProjectsController, type: :request do
   describe "DELETE" do
     let(:action) { delete url }
     
-    describe "/admin/à-propos/:id" do
-      let(:url) { project_url(project) }
+    describe "/admin/projets/:id" do
+      let(:url) { admin_project_url(project) }
       
       it "destroys the requested project" do
         expect{ action }.to change(Project, :count).by(-1)
@@ -107,7 +109,7 @@ RSpec.describe ProjectsController, type: :request do
       
       it "redirects to the projects list" do
         action
-        expect(response).to redirect_to(projects_url)
+        expect(response).to redirect_to(admin_projects_url)
       end
     end
   end

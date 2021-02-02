@@ -19,9 +19,8 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
-    resources :projects, path: "projets", as: "fr_projects"
-    
     scope '/admin', module: 'admin' do
+      resources :projects, path: "projets", as: "fr_admin_projects"
       resources :messages, path: "messages/fr", as: "fr_admin_messages", except: [:edit, :update]
       resources :abouts, path: "à-propos",     as: "fr_admin_abouts"
       resources :users,  path: "utilisateurs", as: "fr_admin_users", format: false
@@ -40,9 +39,8 @@ Rails.application.routes.draw do
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
-    resources :projects, as: "en_projects"
-    
     scope '/admin', module: 'admin' do
+      resources :projects, as: "en_admin_projects"
       resources :messages, path: "messages/en", as: "en_admin_messages", except: [:edit, :update]
       resources :abouts, as: "en_admin_abouts"
       resources :users,  as: "en_admin_users", format: false
@@ -62,9 +60,8 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     
-    resources :projects, path: "projets"
-    
     namespace 'admin' do
+      resources :projects, path: "projets"
       resources :messages, path: "messages/fr", except: [:edit, :update]
       resources :abouts, path: "à-propos"
       resources :users,  path: "utilisateurs", format: false
