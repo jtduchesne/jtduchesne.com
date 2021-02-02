@@ -1,7 +1,5 @@
-class Admin::MessagesController < Admin::AdminController
+class Admin::MessagesController < Admin::ApplicationController
   before_action :set_message, only: [:show, :destroy]
-
-  layout 'jumbotron'
 
   # GET /messages
   # GET /messages.json

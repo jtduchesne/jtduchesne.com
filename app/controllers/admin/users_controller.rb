@@ -1,7 +1,5 @@
-class Admin::UsersController < Admin::AdminController
+class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  layout 'jumbotron'
 
   # GET /users
   def index

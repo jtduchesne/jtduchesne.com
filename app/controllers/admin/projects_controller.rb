@@ -1,4 +1,4 @@
-class Admin::ProjectsController < Admin::AdminController
+class Admin::ProjectsController < Admin::ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects

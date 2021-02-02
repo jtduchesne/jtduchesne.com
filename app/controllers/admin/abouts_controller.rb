@@ -1,7 +1,5 @@
-class Admin::AboutsController < Admin::AdminController
+class Admin::AboutsController < Admin::ApplicationController
   before_action :set_about, only: [:show, :edit, :update, :destroy]
-
-  layout 'jumbotron'
 
   # GET /abouts
   # GET /abouts.json

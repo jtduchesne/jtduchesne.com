@@ -1,7 +1,4 @@
-class Admin::AdminController < ApplicationController
-  before_action :require_admin
-
-  layout 'jumbotron'
+class Admin::AdminController < Admin::ApplicationController
 
   # GET /admin
   def index
