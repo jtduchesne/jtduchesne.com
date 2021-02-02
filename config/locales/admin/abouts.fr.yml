@@ -6,8 +6,6 @@ fr:
         empty: Aucune page pour l'instant...
         
         new: Créer une nouvelle page
-        edit: Modifier
-        delete: Supprimer
         confirm: Êtes-vous sûr de vouloir supprimer cette page À-propos du %{from} ?
       show:
         title:

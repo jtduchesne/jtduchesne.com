@@ -6,8 +6,6 @@ fr:
         empty: Aucun projet pour l'instant...
         
         new: Ajouter un nouveau projet
-        edit: Modifier
-        delete: Supprimer
         confirm: Êtes-vous sûr de vouloir supprimer le projet '%{name}' ?
       show:
       new:

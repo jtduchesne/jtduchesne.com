@@ -6,8 +6,6 @@ en:
         empty: There's no project yet...
         
         new: Add a new project
-        edit: Edit
-        delete: Delete
         confirm: Are you sure you want to delete the project '%{name}' ?
       show:
       new:
