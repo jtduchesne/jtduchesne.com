@@ -20,5 +20,7 @@ en:
       project:
         name:        Name
         description: Description
+        description_fr: French description
+        description_en: English description
         live_url:    Project's live URL
         github_url:  Github URL

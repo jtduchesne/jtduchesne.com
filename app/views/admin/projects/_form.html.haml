@@ -14,9 +14,23 @@
       .form-group
         = f.label :name
         = f.text_field :name, class: "form-control"
-      .form-group
-        = f.label :description
-        = f.text_area :description, class: "form-control"
+      %ul.nav.nav-pills{role: "tablist", class: "justify-content-center"}
+        %li.nav-item{role: "presentation"}
+          %a.nav-link{id: "fr-tab", role: "tab", href: "#fr", class: "active",
+                      data: { toggle: "tab" }, aria: { controls: "fr", selected: "true" }}
+            = t('fr')
+        %li.nav-item{role: "presentation"}
+          %a.nav-link{id: "en-tab", role: "tab", href: "#en",
+                      data: { toggle: "tab" }, aria: { controls: "en", selected: "false" }}
+            = t('en')
+      .tab-content.my-1
+        = f.fields_for :description, @project.description, include_id: false do |df|
+          .tab-pane.fade{id: "fr", role: "tabpanel", aria: { labelledby: "fr-tab" }, class: "show active"}
+            .form-group
+              = df.text_area :fr, class: "form-control", value: @project.description[:fr]
+          .tab-pane.fade{id: "en", role: "tabpanel", aria: { labelledby: "en-tab" }}
+            .form-group
+              = df.text_area :en, class: "form-control", value: @project.description[:en]
   .form-group.mt-3
     = f.label :live_url
     = f.url_field :live_url, class: "form-control"

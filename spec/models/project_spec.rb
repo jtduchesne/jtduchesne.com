@@ -6,8 +6,12 @@ RSpec.describe Project, type: :model do
   it "requires a name" do
     expect(FactoryBot.build(:project, name: "")).not_to be_valid
   end
-  it "requires a description" do
-    expect(FactoryBot.build(:project, description: "")).not_to be_valid
+  
+  it "requires a french description" do
+    expect(FactoryBot.build(:project, description_fr: "")).not_to be_valid
+  end
+  it "requires an english description" do
+    expect(FactoryBot.build(:project, description_en: "")).not_to be_valid
   end
   
   it "requires either a Live URL, a Github URL, or both" do
@@ -24,9 +28,19 @@ RSpec.describe Project, type: :model do
     subject { project.name }
     it { is_expected.to be_a(String) }
   end
+  
   describe "#description" do
     subject { project.description }
-    it { is_expected.to be_a(String) }
+    it { is_expected.to be_a(HashWithIndifferentAccess) }
+    
+    describe "[:fr]" do
+      subject { project.description[:fr] }
+      it { is_expected.to be_a(String) }
+    end
+    describe "[:en]" do
+      subject { project.description[:en] }
+      it { is_expected.to be_a(String) }
+    end
   end
   
   describe "#live_url" do
