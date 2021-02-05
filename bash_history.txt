@@ -68,3 +68,7 @@ bundle install
 
 rails g migration ConvertProjectDescriptionToJSON
 rails db:migrate
+
+rails g model Tag name
+rails g model Tagging tag:belongs_to taggable:belongs_to
+rails db:migrate

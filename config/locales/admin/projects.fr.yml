@@ -12,6 +12,9 @@ fr:
         title: Nouveau projet
       edit:
         title: Modification de '%{name}'
+      
+      form:
+        tag_names_help: Inscrire les tags séparés par des virgules
   
   activerecord:
     models:
@@ -22,5 +25,6 @@ fr:
         description: Description
         description_fr: Description en français
         description_en: Description en anglais
+        tag_names:   Tags
         live_url:    Adresse du projet en ligne
         github_url:  Adresse du projet sur Github

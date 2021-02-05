@@ -23,6 +23,10 @@
       .col
         %p= @project.description[:en]
 .row.my-3
+  .col
+    %strong= Project.human_attribute_name(:tag_names) + " :"
+    = @project.tags&.map(&:name).join(", ")
+.row.my-3
   .col.small.text-center
     - live_url   = @project.live_url.presence
     - github_url = @project.github_url.presence

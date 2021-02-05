@@ -2,7 +2,7 @@
   - if @project.errors.any?
     = render 'form_errors', model: @project
   
-  .form-row
+  .form-row.mb-3
     .col-auto.h-100
       = f.file_field :image, class: "form-control-file", data: { preview: "preview" }
       .border.text-center.align-middle{style: "min-height: 200px;"}
@@ -31,7 +31,11 @@
           .tab-pane.fade{id: "en", role: "tabpanel", aria: { labelledby: "en-tab" }}
             .form-group
               = df.text_area :en, class: "form-control", value: @project.description[:en]
-  .form-group.mt-3
+  .form-group
+    = f.label :tag_names
+    = f.text_field :tag_names, class: "form-control", aria: { describedby: "tagNamesHelp" }
+    %small#tagNamesHelp.form-text-text-muted= t('.tag_names_help')
+  .form-group
     = f.label :live_url
     = f.url_field :live_url, class: "form-control"
   .form-group

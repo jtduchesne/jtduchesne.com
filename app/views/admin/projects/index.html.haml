@@ -21,7 +21,6 @@
               = link_to url_for(action: 'destroy', id: project), class: "my-auto mx-1", title: t('destroy'), method: :delete, data: { confirm: t('.confirm', name: project.name)} do
                 = image_tag("trash.svg", size: "16", class: "close")
             %p.mb-0= link_to project.description[I18n.locale], url, class: "text-reset"
-            - link = project.live_url.presence || project.github_url
-            %a.small.text-reset.text-muted{href: link, target: "_blank"}= link
+            %small.text-muted= project.tags.map{ |tag| "##{tag.name}" }.join(", ")
 
 = link_to t('.new'), url_for(action: 'new')

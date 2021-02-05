@@ -4,7 +4,7 @@ class Admin::ProjectsController < Admin::ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.includes(:tags).all
   end
 
   # GET /projects/1
@@ -67,6 +67,6 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:name, { description: [:fr, :en] }, :live_url, :github_url, :image)
+    params.require(:project).permit(:name, { description: [:fr, :en] }, :tag_names, :live_url, :github_url, :image)
   end
 end

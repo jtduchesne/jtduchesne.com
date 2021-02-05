@@ -10,5 +10,19 @@ FactoryBot.define do
     
     live_url   { Faker::Internet.url }
     github_url { "https://www.github.com/#{Faker::Internet.username}/#{name}/" }
+    
+    trait :with_tag do
+      after(:create) do |project|
+        create(:tag, projects: [project])
+      end
+    end
+    trait :with_tags do
+      transient do
+        tags_count { 2 }
+      end
+      after(:create) do |project, evaluator|
+        create_list(:tag, evaluator.tags_count, projects: [project])
+      end
+    end
   end
 end
