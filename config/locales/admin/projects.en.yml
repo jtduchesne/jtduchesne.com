@@ -28,3 +28,4 @@ en:
         tag_names:   Tags
         live_url:    Project's live URL
         github_url:  Github URL
+        slug:        Identifier

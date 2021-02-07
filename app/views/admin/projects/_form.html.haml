@@ -35,11 +35,16 @@
     = f.label :tag_names
     = f.text_field :tag_names, class: "form-control", aria: { describedby: "tagNamesHelp" }
     %small#tagNamesHelp.form-text-text-muted= t('.tag_names_help')
+  
   .form-group
     = f.label :live_url
     = f.url_field :live_url, class: "form-control"
   .form-group
     = f.label :github_url
     = f.url_field :github_url, class: "form-control"
+  
+  .form-group
+    = f.label :slug
+    = f.text_field :slug, class: "form-control"
   
   = yield f

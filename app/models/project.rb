@@ -5,6 +5,11 @@ class Project < ApplicationRecord
   
   validates_presence_of :name
   validate :description_present_in_both_languages
+  validates :slug, presence: true, uniqueness: true, format: /\A[^\s\\\/@"']+\z/
+  
+  def to_param
+    slug
+  end
   
   serialize :description, JSON
   def description

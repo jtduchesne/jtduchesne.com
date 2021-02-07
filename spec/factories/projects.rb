@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project do
-    name        { Faker::Lorem.word }
+    name        { Faker::Lorem.words(number: 2).join(" ") }
     description { {fr: description_fr, en: description_en} }
     
     transient do
@@ -10,6 +10,8 @@ FactoryBot.define do
     
     live_url   { Faker::Internet.url }
     github_url { "https://www.github.com/#{Faker::Internet.username}/#{name}/" }
+    
+    slug { name.parameterize }
     
     trait :with_tag do
       after(:create) do |project|

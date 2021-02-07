@@ -20,6 +20,19 @@ RSpec.describe Project, type: :model do
     expect(FactoryBot.build(:project, github_url: "")).to be_valid
   end
   
+  it "requires a slug" do
+    expect(FactoryBot.build(:project, slug: "")).not_to be_valid
+  end
+  it "requires a unique slug" do
+    existing = FactoryBot.create(:project)
+    expect(FactoryBot.build(:project, slug: existing.slug)).not_to be_valid
+  end
+  it "requires a slug without spaces or slashes" do
+    expect(FactoryBot.build(:project, slug: "te st")).not_to be_valid
+    expect(FactoryBot.build(:project, slug: "te/st")).not_to be_valid
+    expect(FactoryBot.build(:project, slug: "te\\st")).not_to be_valid
+  end
+  
   #= Attributes =================================================================#
   
   let(:project) { FactoryBot.create(:project) }
@@ -99,6 +112,11 @@ RSpec.describe Project, type: :model do
   end
   describe "#github_url" do
     subject { project.github_url }
+    it { is_expected.to be_a(String) }
+  end
+  
+  describe "#slug" do
+    subject { project.slug }
     it { is_expected.to be_a(String) }
   end
   

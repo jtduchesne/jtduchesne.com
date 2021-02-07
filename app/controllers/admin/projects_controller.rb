@@ -63,10 +63,10 @@ class Admin::ProjectsController < Admin::ApplicationController
 
 private
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.find_by(slug: params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:name, { description: [:fr, :en] }, :tag_names, :live_url, :github_url, :image)
+    params.require(:project).permit(:image, :name, { description: [:fr, :en] }, :tag_names, :live_url, :github_url, :slug)
   end
 end
