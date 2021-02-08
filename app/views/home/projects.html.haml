@@ -1,0 +1,19 @@
+%h4= t('.title')
+
+%ul.list-group.my-4
+  - if @projects.empty?
+    %li.list-group-item
+      = t('.empty')
+  - else
+    - @projects.each do |project|
+      %li.list-group-item.list-group-item-action.p-0
+        .row.no-gutters
+          - url = url_for(action: 'project', id: project)
+          - if project.image.attached?
+            .col-auto.p-1
+              %a{href: url}
+                = image_tag project.image.variant(resize_to_limit: [150, 150])
+          .col.p-3
+            %h5.mb-0= link_to project.name, url, class: "text-reset"
+            %p.mb-0= link_to project.description[I18n.locale], url, class: "text-reset"
+            %small.text-muted= project.tags.map{ |tag| "##{tag.name}" }.join(", ")

@@ -35,16 +35,33 @@ RSpec.describe HomeController, type: :request do
       end
     end
     
-    describe "/à-propos" do
-      let(:url) { about_url }
+    describe "/projets" do
+      let(:url) { projects_url }
       
-      it 'returns http success' do
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+    describe "/projets/nom-du-projet" do
+      let!(:project) { FactoryBot.create(:project) }
+      
+      let(:url) { project_url(project) }
+      
+      it "returns http success" do
         expect(response).to have_http_status(:success)
       end
     end
     
     describe "/contacter" do
       let(:url) { contact_url }
+      
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
+    end
+    
+    describe "/à-propos" do
+      let(:url) { about_url }
       
       it 'returns http success' do
         expect(response).to have_http_status(:success)

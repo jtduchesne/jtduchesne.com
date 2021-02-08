@@ -2,6 +2,9 @@ fr:
   home:
     index:
       empty: Rien à afficher pour l'instant...
+    projects:
+      title: Projets
+      empty: Rien à afficher pour l'instant...
     about:
       title: À propos de moi
       empty: Rien à afficher pour l'instant...

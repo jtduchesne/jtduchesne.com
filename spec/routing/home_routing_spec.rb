@@ -6,6 +6,11 @@ RSpec.describe HomeController, type: :routing do
     it { expect(get: '/fr').to route_to("home#index", locale: "fr") }
     it { expect(get: '/en').to route_to("home#index", locale: "en") }
     
+    it { expect(get: "/projets").to   route_to("home#projects", locale: "fr") }
+    it { expect(get: "/projets/1").to route_to("home#project",  locale: "fr", id: "1") }
+    it { expect(get: "/projects").to   route_to("home#projects", locale: "en") }
+    it { expect(get: "/projects/1").to route_to("home#project",  locale: "en", id: "1") }
+    
     it { expect(get:  "/contacter").to route_to("messages#new",    locale: "fr") }
     it { expect(post: "/contacter").to route_to("messages#create", locale: "fr") }
     it { expect(get:  "/contact").to   route_to("messages#new",    locale: "en") }
