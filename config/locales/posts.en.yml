@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      post: The post
+    attributes:
+      post:
+        language: Language
+        title:    Title
+        preview:  Preview
+        published_on: Published on
+        created_at:   Created on

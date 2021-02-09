@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_06_231210) do
+ActiveRecord::Schema.define(version: 2021_02_09_202627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 2021_02_06_231210) do
     t.string "from"
     t.string "subject", default: "message"
     t.string "body"
+  end
+
+  create_table "posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "language", limit: 2, default: "FR", null: false
+    t.string "title"
+    t.string "preview"
+    t.date "published_on"
+    t.index ["language"], name: "index_posts_on_language"
   end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

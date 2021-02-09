@@ -1,5 +1,109 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  #= Validations ================================================================#
+  
+  it "requires a title" do
+    expect(FactoryBot.build(:post, title: "")).not_to be_valid
+  end
+  it "requires a preview" do
+    expect(FactoryBot.build(:post, preview: "")).not_to be_valid
+  end
+  
+  #= Scopes =====================================================================#
+  
+  context do
+    let!(:draft)  { FactoryBot.create(:post) }
+    let!(:past)   { FactoryBot.create(:post, :already_published) }
+    let!(:today)  { FactoryBot.create(:post, :published) }
+    let!(:future) { FactoryBot.create(:post, :to_be_published) }
+    
+    describe ".draft" do
+      subject { Post.draft }
+      
+      it { is_expected.to include draft }
+      it { is_expected.not_to include past }
+      it { is_expected.not_to include today }
+      it { is_expected.not_to include future }
+    end
+    
+    describe ".published" do
+      subject { Post.published }
+      
+      it { is_expected.not_to include draft }
+      it { is_expected.to include past }
+      it { is_expected.to include today }
+      it { is_expected.not_to include future }
+    end
+  end
+  
+  context do
+    let!(:french)  { FactoryBot.create(:post, :french) }
+    let!(:english) { FactoryBot.create(:post, :english) }
+    
+    describe ".french" do
+      subject { Post.french }
+      
+      it { is_expected.to     include french }
+      it { is_expected.not_to include english }
+    end
+    describe ".english" do
+      subject { Post.english }
+      
+      it { is_expected.not_to include french }
+      it { is_expected.to     include english }
+    end
+  end
+    
+  #= Attributes =================================================================#
+  
+  let(:post) { FactoryBot.build(:post) }
+  
+  describe "#language" do
+    subject { post.language }
+    it { is_expected.to be_a(String) }
+    
+    it "defaults to french" do
+      expect(subject).to eq "french"
+    end
+  end
+  
+  describe "#title" do
+    subject { post.title }
+    it { is_expected.to be_a(String) }
+  end
+  
+  describe "#preview" do
+    subject { post.preview }
+    it { is_expected.to be_a(String) }
+  end
+  
+  describe "#published_on" do
+    subject { post.published_on }
+    it { is_expected.to be_nil }
+    
+    context "when published" do
+      let(:post) { FactoryBot.build(:post, :published) }
+      it { is_expected.to be_a(Date) }
+    end
+  end
+  
+  describe "#draft?" do
+    subject { post.draft? }
+    it { is_expected.to be true }
+    
+    context "when published" do
+      let(:post) { FactoryBot.build(:post, :published) }
+      it { is_expected.to be false }
+    end
+  end
+  describe "#published?" do
+    subject { post.published? }
+    it { is_expected.to be false }
+    
+    context "when published" do
+      let(:post) { FactoryBot.build(:post, :published) }
+      it { is_expected.to be true }
+    end
+  end
 end

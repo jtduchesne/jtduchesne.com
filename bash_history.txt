@@ -77,3 +77,4 @@ rails g migration AddSlugColumnToProjects slug:index
 rails db:migrate
 
 rails g scaffold Post language title preview published_on:date
+rails db:migrate

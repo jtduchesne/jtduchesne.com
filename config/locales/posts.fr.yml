@@ -1,0 +1,11 @@
+fr:
+  activerecord:
+    models:
+      post: L'article
+    attributes:
+      post:
+        language: Langue
+        title:    Titre
+        preview:  Aperçu
+        published_on: Publié le
+        created_at:   Créé le
