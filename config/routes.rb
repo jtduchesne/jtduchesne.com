@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   TOKEN_REGEXP = /[A-Za-z1-9=]{24}/.freeze unless defined?(TOKEN_REGEXP)
   
   scope "(:locale)/", locale: /fr|en/ do
