@@ -1,4 +1,17 @@
 fr:
+  posts:
+    index:
+      title: Articles
+      empty: Aucun article pour l'instant...
+      
+      new: Écrire un nouvel article
+      confirm: Êtes-vous sûr de vouloir supprimer '%{title}' ?
+    show:
+    new:
+      title: Nouvel article
+    edit:
+      title: Modification
+  
   activerecord:
     models:
       post: L'article

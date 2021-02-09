@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   TOKEN_REGEXP = /[A-Za-z1-9=]{24}/.freeze unless defined?(TOKEN_REGEXP)
   
   scope "(:locale)/", locale: /fr|en/ do
@@ -21,6 +20,8 @@ Rails.application.routes.draw do
     patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
+    
+    resources :posts, path: "articles", as: "fr_posts"
     
     scope '/admin', module: 'admin' do
       resources :projects, path: "projets", as: "fr_admin_projects"
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
+    resources :posts, as: "en_posts"
+    
     scope '/admin', module: 'admin' do
       resources :projects, as: "en_admin_projects"
       resources :messages, path: "messages/en", as: "en_admin_messages", except: [:edit, :update]
@@ -66,6 +69,8 @@ Rails.application.routes.draw do
     patch  '/connexion',   to: 'session#update',  as: ""
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
+    
+    resources :posts, path: "articles"
     
     namespace 'admin' do
       resources :projects, path: "projets"

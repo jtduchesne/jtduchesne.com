@@ -1,18 +1,16 @@
-%p#notice= notice
-
 %p
-  %b Language:
+  %b= Post.human_attribute_name(:language) + " :"
   = @post.language
 %p
-  %b Title:
+  %b= Post.human_attribute_name(:title) + " :"
   = @post.title
 %p
-  %b Preview:
+  %b= Post.human_attribute_name(:preview) + " :"
   = @post.preview
 %p
-  %b Published on:
+  %b= Post.human_attribute_name(:published_on) + " :"
   = @post.published_on
 
-= link_to 'Edit', edit_post_path(@post)
+= link_to t('edit'), url_for(action: 'edit', id: @post)
 \|
-= link_to 'Back', posts_path
+= link_to t('back'), url_for(action: 'index')
