@@ -1,25 +1,27 @@
  require 'rails_helper'
 
-RSpec.describe PostsController, type: :request do
+RSpec.describe Admin::PostsController, type: :request do
+  before { login_as_admin }
+  
   let!(:post_model) { FactoryBot.create(:post) }
   
   describe "GET" do
     let!(:action) { get url }
     
     describe "/articles" do
-      let(:url) { posts_url }
+      let(:url) { admin_posts_url }
       it { expect(response).to be_successful }
     end
     describe "/articles/:id" do
-      let(:url) { post_url(post_model) }
+      let(:url) { admin_post_url(post_model) }
       it { expect(response).to be_successful }
     end
     describe "/articles/new" do
-      let(:url) { new_post_url }
+      let(:url) { new_admin_post_url }
       it { expect(response).to be_successful }
     end
     describe "/articles/:id/edit" do
-      let(:url) { edit_post_url(post_model) }
+      let(:url) { edit_admin_post_url(post_model) }
       it { expect(response).to be_successful }
     end
   end
@@ -31,7 +33,7 @@ RSpec.describe PostsController, type: :request do
     let(:action) { post url, params: { post: attributes } }
     
     describe "/articles" do
-      let(:url) { posts_url }
+      let(:url) { admin_posts_url }
       
       context "with valid parameters" do
         let(:attributes) { valid_attributes }
@@ -42,7 +44,7 @@ RSpec.describe PostsController, type: :request do
         
         it "redirects to the created post" do
           action
-          expect(response).to redirect_to(post_url(Post.order(:created_at).last))
+          expect(response).to redirect_to(admin_post_url(Post.order(:created_at).last))
         end
       end
       
@@ -65,7 +67,7 @@ RSpec.describe PostsController, type: :request do
     let(:action) { patch url, params: { post: new_attributes } }
     
     describe "/articles/:id" do
-      let(:url) { post_url(post_model) }
+      let(:url) { admin_post_url(post_model) }
       
       context "with valid parameters" do
         let(:new_attributes) { {title: "Changed"} }
@@ -76,7 +78,7 @@ RSpec.describe PostsController, type: :request do
         
         it "redirects to the post" do
           action
-          expect(response).to redirect_to(post_url(post_model))
+          expect(response).to redirect_to(admin_post_url(post_model))
         end
       end
       
@@ -99,7 +101,7 @@ RSpec.describe PostsController, type: :request do
     let(:action) { delete url }
     
     describe "/articles/:id" do
-      let(:url) { post_url(post_model) }
+      let(:url) { admin_post_url(post_model) }
       
       it "destroys the requested post" do
         expect{ action }.to change(Post, :count).by(-1)
@@ -107,7 +109,7 @@ RSpec.describe PostsController, type: :request do
       
       it "redirects to the posts list" do
         action
-        expect(response).to redirect_to(posts_url)
+        expect(response).to redirect_to(admin_posts_url)
       end
     end
   end

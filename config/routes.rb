@@ -21,13 +21,12 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "fr_logout"
     
-    resources :posts, path: "articles", as: "fr_posts"
-    
     scope '/admin', module: 'admin' do
-      resources :projects, path: "projets", as: "fr_admin_projects"
+      resources :posts,    path: "articles",    as: "fr_admin_posts"
+      resources :projects, path: "projets",     as: "fr_admin_projects"
       resources :messages, path: "messages/fr", as: "fr_admin_messages", except: [:edit, :update]
-      resources :abouts, path: "à-propos",     as: "fr_admin_abouts"
-      resources :users,  path: "utilisateurs", as: "fr_admin_users", format: false
+      resources :abouts,  path: "à-propos",     as: "fr_admin_abouts"
+      resources :users,   path: "utilisateurs", as: "fr_admin_users", format: false
     end
     
     get '/fr/:token', to: 'session#verify', as: "fr_verification", token: TOKEN_REGEXP
@@ -45,13 +44,12 @@ Rails.application.routes.draw do
     delete '/login',  to: 'session#destroy', as: ""
     get    '/logout', to: 'session#destroy', as: "en_logout"
     
-    resources :posts, as: "en_posts"
-    
     scope '/admin', module: 'admin' do
+      resources :posts,    as: "en_admin_posts"
       resources :projects, as: "en_admin_projects"
-      resources :messages, path: "messages/en", as: "en_admin_messages", except: [:edit, :update]
-      resources :abouts, as: "en_admin_abouts"
-      resources :users,  as: "en_admin_users", format: false
+      resources :messages, as: "en_admin_messages", path: "messages/en", except: [:edit, :update]
+      resources :abouts,   as: "en_admin_abouts"
+      resources :users,    as: "en_admin_users", format: false
     end
     
     get '/en/:token', to: 'session#verify', as: "en_verification", token: TOKEN_REGEXP
@@ -70,13 +68,12 @@ Rails.application.routes.draw do
     delete '/connexion',   to: 'session#destroy', as: ""
     get    '/déconnexion', to: 'session#destroy', as: "logout"
     
-    resources :posts, path: "articles"
-    
     namespace 'admin' do
+      resources :posts,    path: "articles"
       resources :projects, path: "projets"
       resources :messages, path: "messages/fr", except: [:edit, :update]
-      resources :abouts, path: "à-propos"
-      resources :users,  path: "utilisateurs", format: false
+      resources :abouts,   path: "à-propos"
+      resources :users,    path: "utilisateurs", format: false
     end
     
     get '/:token', to: 'session#verify', as: "verification", token: TOKEN_REGEXP
