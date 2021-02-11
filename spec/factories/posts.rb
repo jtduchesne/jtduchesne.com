@@ -3,6 +3,8 @@ FactoryBot.define do
     title    { Faker::Lorem.words.join(" ") }
     preview  { Faker::Lorem.paragraph }
     
+    content  { Faker::Lorem.paragraphs(number: 2).map{|p| "<div>#{p}</div>"}.join }
+    
     published_on { nil }
     
     trait :already_published do

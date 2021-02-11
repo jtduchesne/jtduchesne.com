@@ -3,9 +3,27 @@ main {
   
   color: #3d3d3d;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+main h1, main h2, main h3,
+main h4, main h5, main h6 {
+  color: #020202;
+  font-family: "Poppins", sans-serif;
+}
+
+div.trix-content {
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+div.trix-content div {
+  margin-top:    1.5em;
+  margin-bottom: 1.5em;
+}
+div.trix-content div:first-child {
+  margin-top: 0;
+}
+div.trix-content div:last-child {
+  margin-bottom: 0;
+}

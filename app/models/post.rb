@@ -17,4 +17,7 @@ class Post < ApplicationRecord
   def published?
     published_on? && published_on <= Date.today
   end
+  
+  has_rich_text :content
+  validates_presence_of :content
 end

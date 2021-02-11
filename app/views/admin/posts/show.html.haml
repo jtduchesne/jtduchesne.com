@@ -3,15 +3,16 @@
 
 = render layout: 'card' do
   .card-body.text-center.p-5
-    %h3.card-title.font-weight-bolder.text-uppercase
+    %h2.font-weight-bolder.text-uppercase
       = @post.title
-    %h6.card-subtitle.mb-3.text-muted.small
+    %span.datetime.h6.mb-3.text-muted
       - if @post.draft?
         %em= l(@post.created_at.to_date, format: :long)
       - else
         = l(@post.published_on, format: :long)
     %hr
-    %p.card-text.text-justify= @post.preview
+    .text-justify.my-5
+      = @post.content
     
     - if @post.draft?
       = link_to t('publish'), "#", class: "card-link btn btn-warning"

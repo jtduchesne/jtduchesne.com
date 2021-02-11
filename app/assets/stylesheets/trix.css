@@ -402,26 +402,12 @@ trix-editor .attachment__metadata .attachment__size {
   white-space: nowrap;
 }
 
-.trix-content {
-  line-height: 1.5;
-}
-
-.trix-content * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.trix-content h1 {
-  font-size: 1.2em;
-  line-height: 1.2;
-}
-
 .trix-content blockquote {
+  background-color: #fafafa;
   border: 0 solid #ccc;
   border-left-width: 0.3em;
   margin-left: 0.3em;
-  padding-left: 0.6em;
+  padding: 0.6em;
 }
 
 .trix-content [dir=rtl] blockquote,
@@ -429,7 +415,7 @@ trix-editor .attachment__metadata .attachment__size {
   border-width: 0;
   border-right-width: 0.3em;
   margin-right: 0.3em;
-  padding-right: 0.6em;
+  padding: 0.6em;
 }
 
 .trix-content li {
@@ -468,7 +454,8 @@ trix-editor .attachment__metadata .attachment__size {
   text-decoration: none;
 }
 
-.trix-content .attachment a:hover, .trix-content .attachment a:visited:hover {
+.trix-content .attachment a:hover,
+.trix-content .attachment a:visited:hover {
   color: inherit;
 }
 
@@ -512,7 +499,8 @@ trix-editor .attachment__metadata .attachment__size {
   max-width: 33%;
 }
 
-.trix-content .attachment-gallery.attachment-gallery--2 .attachment, .trix-content .attachment-gallery.attachment-gallery--4 .attachment {
+.trix-content .attachment-gallery.attachment-gallery--2 .attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 .attachment {
   flex-basis: 50%;
   max-width: 50%;
 }

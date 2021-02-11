@@ -23,5 +23,6 @@ en:
         language: Language
         title:    Title
         preview:  Preview
+        content:  Content
         published_on: Published on
         created_at:   Created on

@@ -10,6 +10,10 @@ RSpec.describe Post, type: :model do
     expect(FactoryBot.build(:post, preview: "")).not_to be_valid
   end
   
+  it "requires a content" do
+    expect(FactoryBot.build(:post, content: "")).not_to be_valid
+  end
+  
   #= Scopes =====================================================================#
   
   context do
@@ -76,6 +80,11 @@ RSpec.describe Post, type: :model do
   describe "#preview" do
     subject { post.preview }
     it { is_expected.to be_a(String) }
+  end
+  
+  describe "#content" do
+    subject { post.content }
+    it { is_expected.to be_a(ActionText::RichText) }
   end
   
   describe "#published_on" do

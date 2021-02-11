@@ -11,5 +11,7 @@
   .form-group
     = f.label :preview
     = f.text_area :preview, class: "form-control", autocomplete: "off", required: true, maxlength: 500
+  .form-group
+    = f.rich_text_area :content, required: true
   
   = yield f
