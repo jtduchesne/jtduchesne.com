@@ -12,6 +12,10 @@
     = f.label :preview
     = f.text_area :preview, class: "form-control", autocomplete: "off", required: true, maxlength: 500
   .form-group
+    = f.label :tag_names
+    = f.text_field :tag_names, class: "form-control", aria: { describedby: "tagNamesHelp" }
+    %small#tagNamesHelp.form-text-text-muted= t('.tag_names_help')
+  .form-group
     = f.rich_text_area :content, required: true
   
   = yield f

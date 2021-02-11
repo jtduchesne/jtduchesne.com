@@ -6,7 +6,7 @@ class Admin::PostsController < Admin::ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.reverse_order
+    @posts = Post.includes(:tags).all.reverse_order
   end
 
   # GET /posts/1
@@ -69,6 +69,6 @@ private
   end
   
   def post_params
-    params.require(:post).permit(:language, :title, :preview, :content)
+    params.require(:post).permit(:language, :title, :preview, :tag_names, :content)
   end
 end

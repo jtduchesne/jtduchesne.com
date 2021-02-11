@@ -63,6 +63,8 @@ RSpec.describe Post, type: :model do
   
   let(:post) { FactoryBot.build(:post) }
   
+  it_behaves_like "Taggable"
+  
   describe "#language" do
     subject { post.language }
     it { is_expected.to be_a(String) }

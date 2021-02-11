@@ -14,15 +14,19 @@ fr:
         title: Nouvel article
       edit:
         title: Modification
+      
+      form:
+        tag_names_help: Inscrire les tags séparés par des virgules
   
   activerecord:
     models:
       post: L'article
     attributes:
       post:
-        language: Langue
-        title:    Titre
-        preview:  Aperçu
-        content:  Contenu
+        language:  Langue
+        title:     Titre
+        preview:   Aperçu
+        tag_names: Tags
+        content:   Contenu
         published_on: Publié le
         created_at:   Créé le

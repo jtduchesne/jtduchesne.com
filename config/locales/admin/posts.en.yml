@@ -14,15 +14,19 @@ en:
         title: New post
       edit:
         title: Edit post
+      
+      form:
+        tag_names_help: Enter tag names separated by commas
   
   activerecord:
     models:
       post: The post
     attributes:
       post:
-        language: Language
-        title:    Title
-        preview:  Preview
-        content:  Content
+        language:  Language
+        title:     Title
+        preview:   Preview
+        tag_names: Tags
+        content:   Content
         published_on: Published on
         created_at:   Created on

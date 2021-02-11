@@ -22,6 +22,15 @@ RSpec.describe Tag, type: :model do
   
   #= Associations ===============================================================#
   
+  describe "#posts" do
+    let(:tag) { FactoryBot.create(:tag, :with_posts) }
+    
+    subject { tag.posts }
+    
+    it { expect(subject).to be_an(Enumerable) }
+    it { expect(subject.take).to be_a(Post) }
+  end
+  
   describe "#projects" do
     let(:tag) { FactoryBot.create(:tag, :with_projects) }
     

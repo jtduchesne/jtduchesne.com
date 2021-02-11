@@ -16,3 +16,4 @@
     .card-subtitle.text-muted{title: Post.human_attribute_name(:published_on)}
       %small= l(post.published_on, format: :long)
   %p.card-text.my-1= post.preview
+  %small.text-muted= post.hash_tags

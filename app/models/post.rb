@@ -18,6 +18,8 @@ class Post < ApplicationRecord
     published_on? && published_on <= Date.today
   end
   
+  include Taggable
+  
   has_rich_text :content
   validates_presence_of :content
 end

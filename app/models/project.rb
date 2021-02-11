@@ -26,19 +26,7 @@ class Project < ApplicationRecord
   def description_fr; description[:fr]; end
   def description_en; description[:en]; end
   
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
-  
-  TAGS_DELIMITER = ",".freeze
-  def tag_names
-    tags&.map(&:name).join(TAGS_DELIMITER) || ""
-  end
-  def tag_names=(value)
-    tags.clear
-    value.split(TAGS_DELIMITER)&.each do |tag_name|
-      self.tags << Tag.find_or_create_by(name: tag_name.strip)
-    end
-  end
+  include Taggable
   
   validates_presence_of :live_url, unless: :github_url?
   validates_presence_of :github_url, unless: :live_url?

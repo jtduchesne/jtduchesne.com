@@ -6,5 +6,6 @@ else
   json.draft false
   json.published_on post.published_on
 end
+json.array! post.tags, :name
 json.content post.content.body
 json.url url_for(action: 'show', format: :json, only_path: false)
