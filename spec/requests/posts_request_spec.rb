@@ -69,6 +69,25 @@ RSpec.describe Admin::PostsController, type: :request do
     describe "/articles/:id" do
       let(:url) { admin_post_url(post_model) }
       
+      context "with parameter 'published_on'" do
+        let(:new_attributes) { {published_on: Date.today.to_s} }
+        
+        it "publishes the requested post" do
+          expect{ action }.to change{ post_model.reload.published? }.from(false).to(true)
+        end
+        
+        context "in the future" do
+          let(:new_attributes) { {published_on: 1.week.from_now.to_s} }
+          
+          it "does not publish the requested post yet" do
+            expect{ action }.not_to change{ post_model.reload.published? }.from(false)
+          end
+          it "does remove the requested post from draft state" do
+            expect{ action }.to change{ post_model.reload.draft? }.from(true).to(false)
+          end
+        end
+      end
+      
       context "with valid parameters" do
         let(:new_attributes) { {title: "Changed"} }
         

@@ -10,6 +10,7 @@ en:
       show:
         title:
           draft: This is a preview of an unpublished draft
+        publish_date: Publish date
       new:
         title: New post
       edit:

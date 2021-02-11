@@ -15,6 +15,9 @@ import jQuery from "jquery"
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
+import flatpickr from "flatpickr"
+require("flatpickr/dist/flatpickr.css")
+
 document.addEventListener("turbolinks:load", function() {
   $('#toaster > .toast').toast('show');
   
@@ -30,6 +33,18 @@ document.addEventListener("turbolinks:load", function() {
         let file = this.files[0];
         if (file) reader.readAsDataURL(file);
       });
+    }
+  });
+  
+  const $output = $("input.flatpickr");
+  $("#flatpickr").flatpickr({
+    inline: true,
+    locale: document.documentElement.lang,
+    defaultDate: "today",
+    dateFormat: 'Y-m-d',
+    showMonths: 1,
+    onChange: function(selectedDates, dateStr) {
+      $output.val(dateStr);
     }
   });
 });

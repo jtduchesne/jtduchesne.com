@@ -1,0 +1,9 @@
+.modal.fade{tabindex: -1, id: local_assigns[:id], aria: {labelledby: "modalLabel", hidden: "true"}}
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %h5.modal-title.p-0{id: "modalLabel"}= local_assigns[:title]
+        %button.close{type: "button", data: {dismiss: "modal"}, aria: {label: t('close')}}
+          %span{aria: {hidden: "true"}} &times;
+      .modal-body
+        = yield

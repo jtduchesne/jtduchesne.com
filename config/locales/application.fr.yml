@@ -31,6 +31,7 @@ fr:
   
   back:  Retour
   close: Fermer
+  cancel: Annuler
   
   datetime:
     distance_in_words:

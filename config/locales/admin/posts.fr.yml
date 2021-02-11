@@ -10,6 +10,7 @@ fr:
       show:
         title:
           draft: Ceci est un aperçu d'un article non-publié
+        publish_date: Date de publication
       new:
         title: Nouvel article
       edit:
