@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   # Attributes: language, title, preview, published_on
   
+  include Sluggable
+  
   enum language: {french: "FR", english: "EN"}
   
   validates_presence_of :title, :preview

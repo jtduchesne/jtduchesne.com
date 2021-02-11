@@ -9,6 +9,9 @@
     = f.label :title
     = f.text_field :title, class: "form-control", autocomplete: "off", required: true
   .form-group
+    = f.label :slug
+    = f.text_field :slug, class: "form-control", autocomplete: "off", required: true
+  .form-group
     = f.label :preview
     = f.text_area :preview, class: "form-control", autocomplete: "off", required: true, maxlength: 500
   .form-group

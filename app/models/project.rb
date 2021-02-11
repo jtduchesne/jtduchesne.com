@@ -1,15 +1,12 @@
 class Project < ApplicationRecord
   # Attributes: name, description, live_url, github_url
   
+  include Sluggable
+  
   has_one_attached :image
   
   validates_presence_of :name
   validate :description_present_in_both_languages
-  validates :slug, presence: true, uniqueness: true, format: /\A[^\s\\\/@"']+\z/
-  
-  def to_param
-    slug
-  end
   
   serialize :description, JSON
   def description

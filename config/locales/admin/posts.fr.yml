@@ -24,6 +24,7 @@ fr:
       post: L'article
     attributes:
       post:
+        slug:      Identifiant
         language:  Langue
         title:     Titre
         preview:   Aperçu

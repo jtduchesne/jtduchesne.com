@@ -80,3 +80,6 @@ rails g scaffold Post language title preview published_on:date
 rails db:migrate
 
 yarn add flatpickr
+
+rails g migration AddSlugColumnToPosts slug:index
+rails db:migrate

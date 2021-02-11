@@ -24,6 +24,7 @@ en:
       post: The post
     attributes:
       post:
+        slug:      Identifier
         language:  Language
         title:     Title
         preview:   Preview

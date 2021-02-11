@@ -7,6 +7,8 @@ FactoryBot.define do
     
     published_on { nil }
     
+    slug { title.parameterize }
+    
     trait :already_published do
       published_on { rand(1..52).weeks.ago }
     end
