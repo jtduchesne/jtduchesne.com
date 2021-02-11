@@ -8,6 +8,8 @@ en:
         new: Write a new post
         confirm: Are you sure you want to delete '%{title}' ?
       show:
+        title:
+          draft: This is a preview of an unpublished draft
       new:
         title: New post
       edit:

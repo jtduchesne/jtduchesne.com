@@ -1,7 +1,10 @@
-%h4= t('.title')
+= render layout: 'card' do
+  .card-body
+    %h4.mb-3.text-center= t('admin.posts.edit.title')
 
-= render 'form'
-
-= link_to t('show'), url_for(action: 'show', id: @post)
-\|
-= link_to t('back'), url_for(action: 'index')
+    = render 'form' do |f|
+      .form-row.justify-content-center
+        .col-auto
+          = f.submit class: "btn btn-primary"
+        .col-auto
+          = link_to t('back'), url_for(action: 'index'), class: "btn btn-secondary"

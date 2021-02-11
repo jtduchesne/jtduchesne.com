@@ -9,11 +9,15 @@ fr:
             zero:  "Pas de nouveau message"
             one:   "1 nouveau message"
             other: "%{count} nouveaux messages"
+        
+        posts:
+          date:      Date du dernier article
+          published: Nombre total d'articles publiés
+          draft:     Nombre de brouillons
         projects:
           Nombre de projets
         abouts:
-          date: Date de publication de la page À-propos actuelle
-          
+          date:      Date de publication de la page À-propos actuelle
           published: Nombre total de pages À-propos publiée
           draft:     Nombre de brouillons
         users:

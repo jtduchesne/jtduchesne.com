@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   enum language: {french: "FR", english: "EN"}
   
   validates_presence_of :title, :preview
+  validates_length_of :preview, maximum: 500
   
   default_scope -> { order(:published_on, :created_at) }
   

@@ -1,16 +1,21 @@
-%p
-  %b= Post.human_attribute_name(:language) + " :"
-  = @post.language
-%p
-  %b= Post.human_attribute_name(:title) + " :"
-  = @post.title
-%p
-  %b= Post.human_attribute_name(:preview) + " :"
-  = @post.preview
-%p
-  %b= Post.human_attribute_name(:published_on) + " :"
-  = @post.published_on
+- if @post.draft?
+  %p.text-center.mb-2= t('.title.draft')
 
-= link_to t('edit'), url_for(action: 'edit', id: @post)
-\|
-= link_to t('back'), url_for(action: 'index')
+= render layout: 'card' do
+  .card-body.text-center.p-5
+    %h3.card-title.font-weight-bolder.text-uppercase
+      = @post.title
+    %h6.card-subtitle.mb-3.text-muted.small
+      - if @post.draft?
+        %em= l(@post.created_at.to_date, format: :long)
+      - else
+        = l(@post.published_on, format: :long)
+    %hr
+    %p.card-text.text-justify= @post.preview
+    
+    - if @post.draft?
+      = link_to t('publish'), "#", class: "card-link btn btn-warning"
+      -# = form_with url: url_for(action: 'publish', id: @post) do |f|
+      -#   = f.submit t('publish'), class: "btn btn-warning"
+    = link_to t('edit'), url_for(action: 'edit', id: @post), class: "card-link btn btn-primary"
+    = link_to t('back'), url_for(action: 'index'), class: "card-link btn btn-secondary"

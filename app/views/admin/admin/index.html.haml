@@ -8,6 +8,15 @@
 
 .list-group.mt-4
   %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
+                                            href: url_for(controller: 'posts', action: 'index')}
+    = t('admin.posts.index.title')
+    %div
+      - unless @posts.published.empty?
+        %small.text-muted.mx-1{title: t('.posts.date')}= l(@posts.published.last.published_on)
+      %span.badge.badge-pill.badge-primary{title: t('.posts.published')}= @posts.published.count
+      %span.badge.badge-pill.badge-secondary{title: t('.posts.draft')}= @posts.draft.count
+  
+  %a.list-group-item.list-group-item-action{class: "d-flex justify-content-between text-reset",
                                             href: url_for(controller: 'projects', action: 'index')}
     = t('admin.projects.index.title')
     %div

@@ -1,0 +1,18 @@
+.card-body
+  .card-title.d-flex.mb-1
+    %a.h5.text-reset.my-0.mr-auto{href: url_for(action: 'show', id: post)}
+      - if post.draft?
+        %em= "[#{t('draft')}] #{post.title}"
+      - else
+        = post.title
+    = link_to url_for(action: 'edit', id: post), class: "my-auto mx-1", title: t('edit') do
+      = image_tag("pencil.svg", size: "16", class: "close")
+    = link_to url_for(action: 'destroy', id: post), class: "my-auto mx-1", title: t('destroy'), method: :delete, data: { confirm: t('admin.posts.index.confirm', title: post.title)} do
+      = image_tag("trash.svg", size: "16", class: "close")
+  - if post.draft?
+    .card-subtitle.text-muted{title: Post.human_attribute_name(:created_at)}
+      %small.font-italic= l(post.created_at.to_date, format: :long)
+  - else
+    .card-subtitle.text-muted{title: Post.human_attribute_name(:published_on)}
+      %small= l(post.published_on, format: :long)
+  %p.card-text.my-1= post.preview

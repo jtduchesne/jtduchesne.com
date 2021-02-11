@@ -8,6 +8,8 @@ fr:
         new: Écrire un nouvel article
         confirm: Êtes-vous sûr de vouloir supprimer '%{title}' ?
       show:
+        title:
+          draft: Ceci est un aperçu d'un article non-publié
       new:
         title: Nouvel article
       edit:

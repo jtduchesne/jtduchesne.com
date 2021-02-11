@@ -1,27 +1,14 @@
-%h4= t('.title')
+.row.mb-2
+  .col
+    .card.border-0
+      .card-body.py-1
+        %span.h4.card-title= t('.title')
+        %span.h4.card-title.mx-3 &middot;
+        %span.card-text= link_to t('.new'), url_for(action: 'new')
 
-%table
-  %thead
-    %tr
-      %th= Post.human_attribute_name(:language)
-      %th= Post.human_attribute_name(:title)
-      %th= Post.human_attribute_name(:preview)
-      %th= Post.human_attribute_name(:published_on)
-      %th
-      %th
-      %th
-
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= post.language
-        %td= post.title
-        %td= post.preview
-        %td= post.published_on
-        %td= link_to t('show'), url_for(action: 'show', id: post)
-        %td= link_to t('edit'), url_for(action: 'edit', id: post)
-        %td= link_to t('destroy'), url_for(action: 'destroy', id: post), method: :delete, data: { confirm: t('.confirm', title: post.title) }
-
-%br
-
-= link_to t('.new'), url_for(action: 'new')
+- if @posts.blank?
+  = render layout: 'card' do
+    .card-body
+      %h6.card-title.mb-0= t('admin.posts.index.empty')
+- else
+  = render partial: 'post', collection: @posts, layout: 'card'

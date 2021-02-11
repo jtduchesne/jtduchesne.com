@@ -2,17 +2,14 @@
   - if @post.errors.any?
     = render 'form_errors', model: @post
 
-  .field
+  .form-group
     = f.label :language
-    = f.text_field :language
-  .field
+    = f.select :language, options_for_language, class: "form-control"
+  .form-group
     = f.label :title
-    = f.text_field :title
-  .field
+    = f.text_field :title, class: "form-control", autocomplete: "off", required: true
+  .form-group
     = f.label :preview
-    = f.text_field :preview
-  .field
-    = f.label :published_on
-    = f.date_select :published_on
-  .actions
-    = f.submit
+    = f.text_area :preview, class: "form-control", autocomplete: "off", required: true, maxlength: 500
+  
+  = yield f
