@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_181412) do
+ActiveRecord::Schema.define(version: 2021_02_12_001657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -114,6 +114,13 @@ ActiveRecord::Schema.define(version: 2021_02_11_181412) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "translations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "post_id", null: false
+    t.uuid "translated_id", null: false
+    t.index ["post_id"], name: "index_translations_on_post_id"
+    t.index ["translated_id"], name: "index_translations_on_translated_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -129,4 +136,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_181412) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "roles", "users"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "translations", "posts"
+  add_foreign_key "translations", "posts", column: "translated_id"
 end

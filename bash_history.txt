@@ -83,3 +83,6 @@ yarn add flatpickr
 
 rails g migration AddSlugColumnToPosts slug:index
 rails db:migrate
+
+rails g model Translation post:belongs_to translated:belongs_to
+rails db:migrate

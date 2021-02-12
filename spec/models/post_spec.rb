@@ -17,6 +17,19 @@ RSpec.describe Post, type: :model do
   #= Scopes =====================================================================#
   
   context do
+    let!(:untranslated) { FactoryBot.create(:post) }
+    let!(:translated)   { FactoryBot.create(:post, :translated) }
+    
+    describe ".untranslated" do
+      subject { Post.untranslated }
+      
+      it { is_expected.to include untranslated }
+      it { is_expected.not_to include translated }
+      it { is_expected.not_to include translated.translated }
+    end
+  end
+  
+  context do
     let!(:draft)  { FactoryBot.create(:post) }
     let!(:past)   { FactoryBot.create(:post, :already_published) }
     let!(:today)  { FactoryBot.create(:post, :published) }
@@ -117,5 +130,17 @@ RSpec.describe Post, type: :model do
       let(:post) { FactoryBot.build(:post, :published) }
       it { is_expected.to be true }
     end
+  end
+  
+  #= Associations ===============================================================#
+  
+  describe "#translated" do
+    let(:post) { FactoryBot.create(:post, :translated) }
+    
+    subject { post.translated }
+    
+    it { expect(subject).to be_a(Post) }
+    it { expect(subject.translated).to be_a(Post) }
+    it { expect(subject.translated).to eq post }
   end
 end

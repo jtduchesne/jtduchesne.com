@@ -69,6 +69,6 @@ private
   end
   
   def post_params
-    params.require(:post).permit(:slug, :language, :title, :preview, :published_on, :tag_names, :content)
+    params.require(:post).permit(:slug, :language, :translated, :title, :preview, :published_on, :tag_names, :content)
   end
 end

@@ -1,10 +1,14 @@
 = form_with model: @post, url: url_for_form(@post) do |f|
   - if @post.errors.any?
     = render 'form_errors', model: @post
-
-  .form-group
-    = f.label :language
-    = f.select :language, options_for_language, class: "form-control"
+  
+  .row
+    .col-auto.form-group
+      = f.label :language
+      = f.select :language, options_for_language(@post), class: "form-control"
+    .col.form-group
+      = f.label :translated
+      = f.select :translated, options_for_translated(@post), class: "form-control"
   .form-group
     = f.label :title
     = f.text_field :title, class: "form-control", autocomplete: "off", required: true

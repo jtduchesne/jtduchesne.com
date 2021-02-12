@@ -9,6 +9,10 @@ FactoryBot.define do
     
     slug { title.parameterize }
     
+    trait :translated do
+      association(:translated, factory: :post)
+    end
+    
     trait :already_published do
       published_on { rand(1..52).weeks.ago }
     end

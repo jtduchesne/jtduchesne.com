@@ -26,6 +26,7 @@ fr:
       post:
         slug:      Identifiant
         language:  Langue
+        translated: Traduction
         title:     Titre
         preview:   Aperçu
         tag_names: Tags

@@ -5,6 +5,19 @@ class Post < ApplicationRecord
   
   enum language: {french: "FR", english: "EN"}
   
+  has_one :translation
+  has_one :translated, through: :translation, class_name: "Post", foreign_key: "translated_id"
+  
+  def translated=(value)
+    if value.present?
+      value = self.class.find(value) unless value.is_a?(self.class)
+      super(value)
+      value.translated = self unless value.translated.present?
+    end
+  end
+  
+  scope :untranslated, -> { left_outer_joins(:translation).where(translation: {translated: nil}) }
+  
   validates_presence_of :title, :preview
   validates_length_of :preview, maximum: 500
   
