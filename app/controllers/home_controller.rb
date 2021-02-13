@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
-  def index
+  def posts
+    @posts = Post.untranslated.or(Post.language(I18n.locale)).published.all.reverse_order
+  end
+  def post
+    @post = Post.published.find_by!(slug: params[:id])
+    if @post.locale != I18n.locale
+      redirect_to url_for(id: @post.translated, locale: I18n.locale) unless @post.translated.nil?
+    end
   end
   
   def projects

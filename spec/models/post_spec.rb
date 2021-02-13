@@ -70,6 +70,23 @@ RSpec.describe Post, type: :model do
       it { is_expected.not_to include french }
       it { is_expected.to     include english }
     end
+    
+    describe ".language(locale)" do
+      subject { Post.language(locale) }
+      
+      context "when locale is french" do
+        let(:locale) { :fr }
+        
+        it { is_expected.to     include french }
+        it { is_expected.not_to include english }
+      end
+      context "when locale is english" do
+        let(:locale) { :en }
+        
+        it { is_expected.not_to include french }
+        it { is_expected.to     include english }
+      end
+    end
   end
     
   #= Attributes =================================================================#
@@ -85,6 +102,15 @@ RSpec.describe Post, type: :model do
     
     it "defaults to french" do
       expect(subject).to eq "french"
+    end
+  end
+  
+  describe "#locale" do
+    subject { post.locale }
+    it { is_expected.to be_a(Symbol) }
+    
+    it "defaults to french" do
+      expect(subject).to eq :fr
     end
   end
   

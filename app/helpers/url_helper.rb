@@ -3,8 +3,8 @@ module UrlHelper
     model.new_record? ? url_for(action: 'create') : url_for(action: 'update', id: model)
   end
   
-  def home_path
-    url_for(controller: '/home', action: 'index')
+  def blog_path
+    url_for(controller: '/home', action: 'posts')
   end
   def projects_path
     url_for(controller: '/home', action: 'projects')

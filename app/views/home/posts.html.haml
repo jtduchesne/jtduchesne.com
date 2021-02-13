@@ -1,0 +1,6 @@
+- if @posts.blank?
+  = render layout: 'card' do
+    .card-body
+      %h6.card-title.mb-0= t('home.posts.empty')
+- else
+  = render partial: 'post', collection: @posts, layout: 'card'

@@ -1,7 +1,8 @@
 fr:
   home:
-    index:
+    posts:
       empty: Rien à afficher pour l'instant...
+      read_more: Lire la suite…
     projects:
       title: Projets
       empty: Rien à afficher pour l'instant...

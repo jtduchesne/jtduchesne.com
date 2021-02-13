@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   TOKEN_REGEXP = /[A-Za-z1-9=]{24}/.freeze unless defined?(TOKEN_REGEXP)
   
   scope "(:locale)/", locale: /fr|en/ do
-    root 'home#index'
+    root 'home#posts'
   end
   scope "/admin/(:locale)/", locale: /fr|en/ do
     root 'admin/admin#index', as: "admin"
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
     
     get '/fr/:token', to: 'session#verify', as: "fr_verification", token: TOKEN_REGEXP
+    
+    get '/fr/:id', to: 'home#post', as: "fr_post"
   end
   scope locale: 'en' do
     get  '/projects',     to: 'home#projects', as: "en_projects"
@@ -53,6 +55,8 @@ Rails.application.routes.draw do
     end
     
     get '/en/:token', to: 'session#verify', as: "en_verification", token: TOKEN_REGEXP
+    
+    get '/en/:id', to: 'home#post', as: "en_post"
   end
   
   scope path_names: {new: "nouveau", edit: "modifier"} do
@@ -77,5 +81,7 @@ Rails.application.routes.draw do
     end
     
     get '/:token', to: 'session#verify', as: "verification", token: TOKEN_REGEXP
+    
+    get '/:id', to: 'home#post', as: "post"
   end
 end

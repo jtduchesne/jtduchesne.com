@@ -1,0 +1,9 @@
+.card-body
+  %p.small.text-muted.mb-0{title: Post.human_attribute_name(:published_on)}
+    = image_tag("calendar.svg", size: 12)
+    = l(post.published_on, format: :long)
+  %a.h4.card-title.text-reset.mb-0{href: url_for(action: 'post', id: post)}
+    = post.title
+  %p.card-text.my-3
+    = post.preview
+  = link_to t('home.posts.read_more'), url_for(action: 'post', id: post), class: "mx-2 btn btn-sm btn-outline-primary rounded-pill"

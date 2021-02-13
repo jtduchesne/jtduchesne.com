@@ -1,7 +1,8 @@
 en:
   home:
-    index:
+    posts:
       empty: Nothing to show for now...
+      read_more: Read more…
     projects:
       title: Projects
       empty: Nothing to show for now...

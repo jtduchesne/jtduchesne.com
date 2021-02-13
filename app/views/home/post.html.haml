@@ -1,0 +1,11 @@
+= render layout: 'card' do
+  .card-body.text-center.p-5
+    %h2.font-weight-bolder.text-uppercase
+      = @post.title
+    %span.datetime.h6.mb-3.text-muted
+      = l(@post.published_on, format: :long)
+    %hr
+    .text-justify.my-5
+      = @post.content
+    
+    = link_to t('back'), url_for(action: 'posts'), class: "card-link btn btn-secondary"

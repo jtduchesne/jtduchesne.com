@@ -5,8 +5,15 @@ class Post < ApplicationRecord
   
   enum language: {french: "FR", english: "EN"}
   
+  scope :language, ->(locale) { where(language: locale.to_s.upcase) }
+  
+  def locale
+    language_before_type_cast.downcase.to_sym
+  end
+  
   has_one :translation
-  has_one :translated, through: :translation, class_name: "Post", foreign_key: "translated_id"
+  has_one :translated, -> { published }, through: :translation,
+                       class_name: "Post", foreign_key: "translated_id"
   
   def translated=(value)
     if value.present?

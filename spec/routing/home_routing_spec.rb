@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe HomeController, type: :routing do
   describe "routing" do
-    it { expect(get: '/').to route_to("home#index") }
-    it { expect(get: '/fr').to route_to("home#index", locale: "fr") }
-    it { expect(get: '/en').to route_to("home#index", locale: "en") }
+    it { expect(get: '/').to route_to("home#posts") }
+    it { expect(get: '/fr').to route_to("home#posts", locale: "fr") }
+    it { expect(get: '/en').to route_to("home#posts", locale: "en") }
+    
+    it { expect(get: '/blog-post').to route_to("home#post", id: "blog-post") }
     
     it { expect(get: "/projets").to   route_to("home#projects", locale: "fr") }
     it { expect(get: "/projets/1").to route_to("home#project",  locale: "fr", id: "1") }
