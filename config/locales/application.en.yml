@@ -2,6 +2,7 @@ en:
   application:
     header:
       description: Real-life coding examples and tutorials
+    navbar:
       language:    "English\nClick to choose language"
     footer:
       copyright: All rights reserved

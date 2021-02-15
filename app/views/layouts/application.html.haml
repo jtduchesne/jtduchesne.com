@@ -25,12 +25,17 @@
       %link{rel: "alternate", href: root_url(locale: locale), hreflang: locale}
     %link{rel: "alternate", href: root_url(locale: nil),  hreflang: "x-default"}
   %body
-    .container.px-0.shadow-lg
-      %header
+    %header.shadow-sm
+      .container
         = render 'header'
-      %main.p-2
+      .container-fluid
+        = render 'navbar'
+    %main
+      .container-fluid
         = yield
+      .container
         - if flash.any?
           = render 'toaster'
-      %footer
+    %footer
+      .container-fluid.px-0
         = render 'footer'

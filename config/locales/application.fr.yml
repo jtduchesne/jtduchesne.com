@@ -2,6 +2,7 @@ fr:
   application:
     header:
       description: Exemples concrets de code et tutoriels
+    navbar:
       language:    "Français\nCliquer pour choisir la langue"
     footer:
       copyright: Tous droits réservés
