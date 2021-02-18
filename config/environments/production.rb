@@ -57,7 +57,12 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "jtduchesne_production"
 
-  config.action_mailer.perform_caching = false
+  # ActionMailer configuration
+  config.action_mailer.tap do |m|
+    m.default_url_options = { host: 'www.jtduchesne.com', protocol: 'https' }
+    m.delivery_method = :sendmail
+    m.perform_caching = false
+  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

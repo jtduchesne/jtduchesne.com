@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: jtduchesne_production
-  username: jtduchesne
+  username: deployer
   password: <%= ENV['JTDUCHESNE_DATABASE_PASSWORD'] %>
