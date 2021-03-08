@@ -1,5 +1,5 @@
 !!! 5
-%html{lang: I18n.locale}
+%html{lang: I18n.locale, prefix: "og: https://ogp.me/ns#"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
@@ -12,6 +12,15 @@
     %link{rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png"}
     %link{rel: "apple-touch-icon",      sizes: "180x180", href: "/apple-touch-icon.png"}
     %link{rel: "manifest", href: "/site.webmanifest"}
+    
+    %meta{property: "og:title",       content: "jtduchesne.com"}
+    %meta{property: "og:description", content: t('application.header.description')}
+    %meta{property: "og:locale",      content: "#{I18n.locale}_CA"}
+    - (I18n.available_locales - [I18n.locale]).each do |alt|
+      %meta{property: "og:locale:alternate", content: "#{alt}_CA"}
+    %meta{property: "og:url",         content: request.original_url.split('?').first}
+    %meta{property: "og:image",       content: "https://www.jtduchesne.com/android-chrome-512x512.png"}
+    %meta{property: "og:type",        content: "website"}
     
     = csrf_meta_tags
     = csp_meta_tag
