@@ -18,8 +18,8 @@
     %meta{property: "og:locale",      content: "#{I18n.locale}_CA"}
     - (I18n.available_locales - [I18n.locale]).each do |alt|
       %meta{property: "og:locale:alternate", content: "#{alt}_CA"}
-    %meta{property: "og:url",         content: request.original_url.split('?').first}
-    %meta{property: "og:image",       content: "https://www.jtduchesne.com/android-chrome-512x512.png"}
+    %meta{property: "og:url",         content: request.original_url.split('?').first.sub(/^https?:/,"")}
+    %meta{property: "og:image",       content: "//#{request.host_with_port}/android-chrome-512x512.png"}
     %meta{property: "og:type",        content: "website"}
     
     = csrf_meta_tags
